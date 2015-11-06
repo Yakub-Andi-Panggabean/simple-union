@@ -96,11 +96,15 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateSelectAllQuery() {
+	public String generateSelectAllQuery(boolean isPagination) {
 		// TODO Auto-generated method stub
-		String generatedQuery = SELECT_ALL_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName());
+		StringBuilder generatedQuery = new StringBuilder(
+				SELECT_ALL_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName()));
+		if (isPagination) {
+			generatedQuery.append(" limit ?,?");
+		}
 		LOG.info("generateSelectAllQuery() :" + generatedQuery);
-		return generatedQuery;
+		return generatedQuery.toString();
 	}
 
 	public String generateCountQuery() {
@@ -195,7 +199,7 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		}
 		String generatedQuery = SELECT_BY_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName()).replace(FIELDS_NAMES,
 				params);
-		LOG.info("generateSelectByQuery(List<String> byParams) :" + generatedQuery);
+		LOG.info("generateSelectByQuery(List<String> byParams) : " + generatedQuery);
 		return generatedQuery;
 	}
 

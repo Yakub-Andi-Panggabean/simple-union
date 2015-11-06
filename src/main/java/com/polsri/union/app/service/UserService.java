@@ -14,6 +14,8 @@ public interface UserService {
 
 	User findByUserName(String userName);
 
-	List<User> findAllUser();
+	List<User> findAllUser(int start, int limit);
+
+	Long countTotalUser();
 
 }

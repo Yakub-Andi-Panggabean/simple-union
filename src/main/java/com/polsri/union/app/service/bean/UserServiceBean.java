@@ -42,9 +42,9 @@ public class UserServiceBean implements UserService {
 	}
 
 	@Override
-	public List<User> findAllUser() {
+	public List<User> findAllUser(int start, int limit) {
 		// TODO Auto-generated method stub
-		return dao.findAllUser();
+		return dao.findAllUser(start, limit);
 	}
 
 	@Override
@@ -54,6 +54,12 @@ public class UserServiceBean implements UserService {
 		User user = new User();
 		user.setUserId(userId);
 		dao.delete(user);
+	}
+
+	@Override
+	public Long countTotalUser() {
+		// TODO Auto-generated method stub
+		return dao.countTotalUser();
 	}
 
 }

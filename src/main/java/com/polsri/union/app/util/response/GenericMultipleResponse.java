@@ -4,21 +4,13 @@ import java.util.List;
 
 public class GenericMultipleResponse<T> extends GenericResponse {
 
-	private PageInformation pageInformation;
 	List<T> contents;
+	private PageInformation pageInformation;
 
 	public GenericMultipleResponse(ErrorCategory errorCategory, List<String> errorMessages, boolean success,
-			PageInformation pageInformation, List<T> contents) {
+			List<T> contents, PageInformation pageInformation) {
 		super(errorCategory, errorMessages, success);
-		this.pageInformation = pageInformation;
 		this.contents = contents;
-	}
-
-	public PageInformation getPageInformation() {
-		return pageInformation;
-	}
-
-	public void setPageInformation(PageInformation pageInformation) {
 		this.pageInformation = pageInformation;
 	}
 
@@ -28,6 +20,14 @@ public class GenericMultipleResponse<T> extends GenericResponse {
 
 	public void setContents(List<T> contents) {
 		this.contents = contents;
+	}
+
+	public PageInformation getPageInformation() {
+		return pageInformation;
+	}
+
+	public void setPageInformation(PageInformation pageInformation) {
+		this.pageInformation = pageInformation;
 	}
 
 	@Override

@@ -14,9 +14,14 @@ public class PageInformation {
 
 	public PageInformation(Integer page, Integer pageSize, Long totalRecord) {
 		super();
-		this.page = page;
+		Double tPage = Math.ceil((double) totalRecord / pageSize);
+		if (page > tPage) {
+			this.page = tPage.intValue();
+		} else {
+			this.page = page;
+		}
 		this.pageSize = pageSize;
-		this.totalPage = getTotalPage();
+		this.totalPage = tPage.intValue();
 		this.totalRecord = totalRecord;
 	}
 
@@ -37,21 +42,20 @@ public class PageInformation {
 		this.pageSize = pageSize;
 	}
 
-	public Integer getTotalPage() {
-		Double totalPage = Math.ceil((double) getTotalRecord() / getPageSize());
-		return totalPage.intValue();
-	}
-
-	public void setTotalPage(Integer totalPage) {
-		this.totalPage = totalPage;
-	}
-
 	public Long getTotalRecord() {
 		return totalRecord;
 	}
 
 	public void setTotalRecord(Long totalRecord) {
 		this.totalRecord = totalRecord;
+	}
+
+	public Integer getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(Integer totalPage) {
+		this.totalPage = totalPage;
 	}
 
 	@Override

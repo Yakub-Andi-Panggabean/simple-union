@@ -14,7 +14,7 @@ public interface QueryDomainGenerator {
 
 	String generateDeleteQuery();
 
-	String generateSelectAllQuery();
+	String generateSelectAllQuery(boolean isPagination);
 
 	String generateCountQuery();
 

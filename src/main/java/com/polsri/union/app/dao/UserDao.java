@@ -37,11 +37,17 @@ public class UserDao {
 	public User findUser(User user) {
 		List<String> params = new ArrayList<>();
 		params.add("username");
-		return jdbcTemplate.queryForObject(user.generateSelectByQuery(params), User.obtainRowMapper());
+		return jdbcTemplate.queryForObject(user.generateSelectByQuery(params), new Object[] { user.getUsername() },
+				User.obtainRowMapper());
 	}
 
-	public List<User> findAllUser() {
-		return jdbcTemplate.query(new User().generateSelectAllQuery(), User.obtainRowMapper());
+	public List<User> findAllUser(int start, int length) {
+		return jdbcTemplate.query(new User().generateSelectAllQuery(true), new Object[] { start, length },
+				User.obtainRowMapper());
+	}
+
+	public Long countTotalUser() {
+		return jdbcTemplate.queryForObject(new User().generateCountQuery(), Long.class);
 	}
 
 }
