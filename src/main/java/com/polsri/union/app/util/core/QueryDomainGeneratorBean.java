@@ -113,31 +113,28 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateCountByQuery(List<String> byParams) {
+	public String generateCountByQuery(String... byParam) {
 		StringBuilder params = new StringBuilder();
-		int i = 0;
-		for (String byParam : byParams) {
-			params.append(byParam);
+		for (int i = 0; i < byParam.length; i++) {
+			params.append(byParam[i]);
 			params.append(QUESTION_MARK_EQUAL);
-			if (byParams.size() > 1) {
-				if (i < byParams.size() - 1) {
+			if (byParam.length > 1) {
+				if (i < byParam.length - 1) {
 					params.append(AND_CLAUSE);
-					i++;
 				}
 			}
 		}
 		String generatedQuery = COUNT_BY_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName()).replace(FIELDS_NAMES,
 				params);
-		LOG.info("generateCountByQuery(List<String> byParams) :" + generatedQuery);
+		LOG.info("generateCountByQuery(String... byParam) :" + generatedQuery);
 		return generatedQuery;
 	}
 
-	public String generateUpdateByQuery(List<String> byParams) {
+	public String generateUpdateByQuery(String... byParam) {
 		// TODO Auto-generated method stub
 		Field fields[] = this.getClass().getDeclaredFields();
 		StringBuilder fieldName = new StringBuilder();
 		StringBuilder params = new StringBuilder();
-		int i = 0;
 		for (Field field : fields) {
 			String fieldNames = mapTableField().get(field.getName());
 			if (fieldNames != null) {
@@ -146,13 +143,12 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 				fieldName.append(",");
 			}
 		}
-		for (String byParam : byParams) {
-			params.append(byParam);
+		for (int i = 0; i < byParam.length; i++) {
+			params.append(byParam[i]);
 			params.append(QUESTION_MARK_EQUAL);
-			if (byParams.size() > 1) {
-				if (i < byParams.size() - 1) {
+			if (byParam.length > 1) {
+				if (i < byParam.length - 1) {
 					params.append(AND_CLAUSE);
-					i++;
 				}
 			}
 		}
@@ -163,15 +159,14 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateDeleteByQuery(List<String> byParams) {
+	public String generateDeleteByQuery(String... byParams) {
 		// TODO Auto-generated method stub
 		StringBuilder params = new StringBuilder();
-		int i = 0;
-		for (String byParam : byParams) {
-			params.append(byParam);
+		for (int i = 0; i < byParams.length; i++) {
+			params.append(byParams[i]);
 			params.append(QUESTION_MARK_EQUAL);
-			if (byParams.size() > 1) {
-				if (i < byParams.size() - 1) {
+			if (byParams.length > 1) {
+				if (i < byParams.length - 1) {
 					params.append(AND_CLAUSE);
 					i++;
 				}
@@ -183,15 +178,14 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateSelectByQuery(List<String> byParams) {
+	public String generateSelectByQuery(String... byParams) {
 		// TODO Auto-generated method stub
 		StringBuilder params = new StringBuilder();
-		int i = 0;
-		for (String byParam : byParams) {
-			params.append(byParam);
+		for (int i = 0; i < byParams.length; i++) {
+			params.append(byParams[i]);
 			params.append(QUESTION_MARK_EQUAL);
-			if (byParams.size() > 1) {
-				if (i < byParams.size() - 1) {
+			if (byParams.length > 1) {
+				if (i < byParams.length - 1) {
 					params.append(AND_CLAUSE);
 					i++;
 				}
@@ -233,15 +227,13 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateSelectFieldByQuery(List<String> fields) {
+	public String generateSelectFieldByQuery(String... fields) {
 		StringBuilder paramsFields = new StringBuilder();
-		int i = 0;
-		for (String byParam : fields) {
-			paramsFields.append(byParam);
-			if (fields.size() > 1) {
-				if (i < fields.size() - 1) {
+		for (int i = 0; i < fields.length; i++) {
+			paramsFields.append(fields[i]);
+			if (fields.length > 1) {
+				if (i < fields.length - 1) {
 					paramsFields.append(",");
-					i++;
 				}
 			}
 		}

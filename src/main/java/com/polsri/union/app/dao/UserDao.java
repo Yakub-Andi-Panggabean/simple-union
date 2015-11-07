@@ -1,6 +1,5 @@
 package com.polsri.union.app.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +34,7 @@ public class UserDao {
 	}
 
 	public User findUser(User user) {
-		List<String> params = new ArrayList<>();
-		params.add("username");
-		return jdbcTemplate.queryForObject(user.generateSelectByQuery(params), new Object[] { user.getUsername() },
+		return jdbcTemplate.queryForObject(user.generateSelectByQuery("username"), new Object[] { user.getUsername() },
 				User.obtainRowMapper());
 	}
 

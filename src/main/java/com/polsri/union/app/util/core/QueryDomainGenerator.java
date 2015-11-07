@@ -18,15 +18,15 @@ public interface QueryDomainGenerator {
 
 	String generateCountQuery();
 
-	String generateCountByQuery(List<String> byParams);
+	String generateCountByQuery(String... byParam);
 
-	String generateUpdateByQuery(List<String> byParams);
+	String generateUpdateByQuery(String... byParam);
 
-	String generateDeleteByQuery(List<String> byParams);
+	String generateDeleteByQuery(String... byParams);
 
-	String generateSelectByQuery(List<String> byParams);
+	String generateSelectByQuery(String... byParams);
 
-	String generateSelectFieldByQuery(List<String> fields);
+	String generateSelectFieldByQuery(String... fields);
 
 	String generateSelectFieldByQuery(List<String> fields, List<String> byParams);
 

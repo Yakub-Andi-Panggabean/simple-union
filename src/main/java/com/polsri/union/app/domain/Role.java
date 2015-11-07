@@ -1,9 +1,13 @@
 package com.polsri.union.app.domain;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.polsri.union.app.util.core.QueryDomainGeneratorBean;
 
@@ -19,6 +23,22 @@ public class Role extends QueryDomainGeneratorBean implements Serializable {
 	private String createdBy;
 	private Date updatedDate;
 	private String updatedBy;
+
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Role(String roleId, String roleName, Date createdDate, String createdBy, Date updatedDate,
+			String updatedBy) {
+		super();
+		this.roleId = roleId;
+		this.roleName = roleName;
+		this.createdDate = createdDate;
+		this.createdBy = createdBy;
+		this.updatedDate = updatedDate;
+		this.updatedBy = updatedBy;
+	}
 
 	public String getRoleId() {
 		return roleId;
@@ -97,6 +117,20 @@ public class Role extends QueryDomainGeneratorBean implements Serializable {
 	public String toString() {
 		return "Roles [roleId=" + roleId + ", roleName=" + roleName + ", createdDate=" + createdDate + ", createdBy="
 				+ createdBy + ", updatedDate=" + updatedDate + ", updatedBy=" + updatedBy + "]";
+	}
+
+	public static RowMapper<Role> obtainRowMapper() {
+		return new RowMapper<Role>() {
+
+			@Override
+			public Role mapRow(ResultSet rs, int rowCount) throws SQLException {
+				// TODO Auto-generated method stub
+				return new Role(rs.getString("role_id"), rs.getString("role_name"),
+						new Date(rs.getDate("created_date").getTime()), rs.getString("created_by"),
+						new Date(rs.getDate("updated_date").getTime()), rs.getString("updated_by"));
+			}
+		};
+
 	}
 
 }
