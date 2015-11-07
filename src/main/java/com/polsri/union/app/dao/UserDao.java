@@ -34,8 +34,8 @@ public class UserDao {
 	}
 
 	public User findUser(User user) {
-		return jdbcTemplate.queryForObject(user.generateSelectByQuery("username"), new Object[] { user.getUsername() },
-				User.obtainRowMapper());
+		return jdbcTemplate.queryForObject(user.generateSelectByQuery(false, "username"),
+				new Object[] { user.getUsername() }, User.obtainRowMapper());
 	}
 
 	public List<User> findAllUser(int start, int length) {

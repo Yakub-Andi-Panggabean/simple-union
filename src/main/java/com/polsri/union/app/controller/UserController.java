@@ -210,6 +210,9 @@ public class UserController {
 		try {
 			int startingPage = start - 1;// the start of pagination which is 0
 											// to 1
+			if (startingPage < 0) {
+				startingPage = 0;
+			}
 			List<User> users = service.findAllUser(startingPage, limit);
 			for (User user : users) {
 				userDto = new UserDto();

@@ -96,11 +96,11 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateSelectAllQuery(boolean isPagination) {
+	public String generateSelectAllQuery(boolean isPaginated) {
 		// TODO Auto-generated method stub
 		StringBuilder generatedQuery = new StringBuilder(
 				SELECT_ALL_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName()));
-		if (isPagination) {
+		if (isPaginated) {
 			generatedQuery.append(" limit ?,?");
 		}
 		LOG.info("generateSelectAllQuery() :" + generatedQuery);
@@ -178,7 +178,7 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		return generatedQuery;
 	}
 
-	public String generateSelectByQuery(String... byParams) {
+	public String generateSelectByQuery(boolean isPaginated, String... byParams) {
 		// TODO Auto-generated method stub
 		StringBuilder params = new StringBuilder();
 		for (int i = 0; i < byParams.length; i++) {
@@ -193,6 +193,10 @@ public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 		}
 		String generatedQuery = SELECT_BY_STATEMENT_BLUEPRINT.replace(TABLE_NAME, findTableName()).replace(FIELDS_NAMES,
 				params);
+
+		if (isPaginated) {
+			generatedQuery.concat(" limit ?,?");
+		}
 		LOG.info("generateSelectByQuery(List<String> byParams) : " + generatedQuery);
 		return generatedQuery;
 	}

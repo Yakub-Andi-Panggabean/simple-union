@@ -1,9 +1,13 @@
 package com.polsri.union.app.domain;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.polsri.union.app.util.core.QueryDomainGeneratorBean;
 
@@ -22,6 +26,25 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 	private String createdBy;
 	private Date updatedDate;
 	private String updatedBy;
+
+	public Menu(String menuId, String label, String parent, String relativeUrl, int active, Date createdDate,
+			String createdBy, Date updatedDate, String updatedBy) {
+		super();
+		this.menuId = menuId;
+		this.label = label;
+		this.parent = parent;
+		this.relativeUrl = relativeUrl;
+		this.active = active;
+		this.createdDate = createdDate;
+		this.createdBy = createdBy;
+		this.updatedDate = updatedDate;
+		this.updatedBy = updatedBy;
+	}
+
+	public Menu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getMenuId() {
 		return menuId;
@@ -112,6 +135,7 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 		// TODO Auto-generated method stub
 		Map<String, String> fields = new HashMap<String, String>();
 		fields.put("menuId", "menu_id");
+		fields.put("label", "label");
 		fields.put("parent_id", "parent");
 		fields.put("relativeUrl", "relative_url");
 		fields.put("active", "active");
@@ -127,6 +151,20 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 		return "Menu [menuId=" + menuId + ", label=" + label + ", parent=" + parent + ", relativeUrl=" + relativeUrl
 				+ ", active=" + active + ", createdDate=" + createdDate + ", createdBy=" + createdBy + ", updatedDate="
 				+ updatedDate + ", updatedBy=" + updatedBy + "]";
+	}
+
+	public static RowMapper<Menu> obtainRowMapper() {
+		return new RowMapper<Menu>() {
+
+			@Override
+			public Menu mapRow(ResultSet rs, int rownum) throws SQLException {
+				// TODO Auto-generated method stub
+				return new Menu(rs.getString("menu_id"), rs.getString("label"), rs.getString("parent"),
+						rs.getString("relative_url"), rs.getInt("active"),
+						new Date(rs.getDate("created_date").getTime()), rs.getString("created_by"),
+						new Date(rs.getDate("updated_date").getTime()), rs.getString("updated_by"));
+			}
+		};
 	}
 
 }

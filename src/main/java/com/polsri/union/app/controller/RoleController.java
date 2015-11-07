@@ -203,7 +203,9 @@ public class RoleController {
 		List<String> errorMessages = new ArrayList<String>();
 		try {
 			int startingPage = start - 1;// the start of pagination which is 0
-											// to 1
+			if (startingPage < 0) {
+				startingPage = 0;
+			}
 			List<Role> roles = service.findAllRoles(startingPage, limit);
 			for (Role role : roles) {
 				roleDto = new RoleDto();

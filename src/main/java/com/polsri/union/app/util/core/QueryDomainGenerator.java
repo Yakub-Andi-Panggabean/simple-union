@@ -14,7 +14,7 @@ public interface QueryDomainGenerator {
 
 	String generateDeleteQuery();
 
-	String generateSelectAllQuery(boolean isPagination);
+	String generateSelectAllQuery(boolean isPaginated);
 
 	String generateCountQuery();
 
@@ -24,7 +24,7 @@ public interface QueryDomainGenerator {
 
 	String generateDeleteByQuery(String... byParams);
 
-	String generateSelectByQuery(String... byParams);
+	String generateSelectByQuery(boolean isPaginated, String... byParams);
 
 	String generateSelectFieldByQuery(String... fields);
 

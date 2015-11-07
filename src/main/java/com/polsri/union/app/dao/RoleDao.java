@@ -38,7 +38,7 @@ public class RoleDao {
 	}
 
 	public Role findRoleByRoleId(String roleId) {
-		return jdbcTemplate.queryForObject(new Role().generateSelectByQuery("role_id"), new Object[] { roleId },
+		return jdbcTemplate.queryForObject(new Role().generateSelectByQuery(false, "role_id"), new Object[] { roleId },
 				Role.obtainRowMapper());
 	}
 
