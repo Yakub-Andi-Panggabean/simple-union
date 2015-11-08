@@ -8,7 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by yakub andi panggabean on 11/05/2015 1:25 AM.
+ * @author yakub andi panggabean on 11/05/2015 1:25 AM.
+ * @description this query generator does not handle join query
  */
 public abstract class QueryDomainGeneratorBean implements QueryDomainGenerator {
 

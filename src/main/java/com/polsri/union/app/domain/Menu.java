@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.polsri.union.app.util.core.QueryDomainGeneratorBean;
+import com.polsri.union.app.util.core.Utility;
 
 public class Menu extends QueryDomainGeneratorBean implements Serializable {
 
@@ -136,14 +137,14 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 		Map<String, String> fields = new HashMap<String, String>();
 		fields.put("menuId", "menu_id");
 		fields.put("label", "label");
-		fields.put("parent_id", "parent");
+		fields.put("parent", "parent_id");
 		fields.put("relativeUrl", "relative_url");
 		fields.put("active", "active");
 		fields.put("createdDate", "created_date");
 		fields.put("createdBy", "created_by");
 		fields.put("updatedDate", "updated_date");
 		fields.put("updatedBy", "updated_by");
-		return null;
+		return fields;
 	}
 
 	@Override
@@ -159,10 +160,10 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 			@Override
 			public Menu mapRow(ResultSet rs, int rownum) throws SQLException {
 				// TODO Auto-generated method stub
-				return new Menu(rs.getString("menu_id"), rs.getString("label"), rs.getString("parent"),
+				return new Menu(rs.getString("menu_id"), rs.getString("label"), rs.getString("parent_id"),
 						rs.getString("relative_url"), rs.getInt("active"),
 						new Date(rs.getDate("created_date").getTime()), rs.getString("created_by"),
-						new Date(rs.getDate("updated_date").getTime()), rs.getString("updated_by"));
+						Utility.convertToUtilDate(rs.getDate("updated_date")), rs.getString("updated_by"));
 			}
 		};
 	}

@@ -10,6 +10,7 @@ import com.polsri.union.app.dao.UserDao;
 import com.polsri.union.app.domain.User;
 import com.polsri.union.app.service.UserService;
 import com.polsri.union.app.util.core.UUIDKeyProcessor;
+import com.polsri.union.app.util.credential.CredentialsInspector;
 
 @Service
 @Transactional(readOnly = true)
@@ -23,6 +24,11 @@ public class UserServiceBean implements UserService {
 	public void insert(User user) {
 		// TODO Auto-generated method stub
 		user.setUserId(UUIDKeyProcessor.generateUUID());
+		try {
+			user.setPassword(CredentialsInspector.generatePassword(user.getPassword()));
+		} catch (Exception ex) {
+
+		}
 		dao.insert(user);
 	}
 
