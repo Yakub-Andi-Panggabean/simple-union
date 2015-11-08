@@ -58,10 +58,4 @@ public class MenuServiceBean implements MenuService {
 		return menuDao.findChildMenu(parentId);
 	}
 
-	@Override
-	public List<Menu> findMenuByRole(String roleId) {
-		// TODO Auto-generated method stub
-		return menuDao.findMenusByRole(roleId);
-	}
-
 }

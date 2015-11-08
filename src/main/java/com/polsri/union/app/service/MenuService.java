@@ -17,7 +17,4 @@ public interface MenuService {
 	List<Menu> findAllMenus();
 
 	List<Menu> findChildMenu(String parentId);
-
-	List<Menu> findMenuByRole(String roleId);
-
 }

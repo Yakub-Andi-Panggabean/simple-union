@@ -12,9 +12,6 @@ import com.polsri.union.app.util.core.UUIDKeyProcessor;
 @Repository
 public class MenuDao {
 
-	private static final StringBuilder FIND_MENU_BY_ROLE = new StringBuilder(
-			"SELECT a.* FROM menu a,role_menu b WHERE a.menu_id=b.menu_id AND b.role_id=?");
-
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -50,10 +47,6 @@ public class MenuDao {
 	public List<Menu> findChildMenu(String parentId) {
 		return jdbcTemplate.query(new Menu().generateSelectByQuery(false, "parent_id"), new Object[] { parentId },
 				Menu.obtainRowMapper());
-	}
-
-	public List<Menu> findMenusByRole(String roleId) {
-		return jdbcTemplate.query(FIND_MENU_BY_ROLE.toString(), new Object[] { roleId }, Menu.obtainRowMapper());
 	}
 
 }
