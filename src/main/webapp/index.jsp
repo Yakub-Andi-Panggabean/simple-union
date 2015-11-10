@@ -33,10 +33,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="resources/js/ripples.min.js"></script>
 	<script src="resources/js/material.min.js"></script>
-	<script src="assets/lib_js/md5.js"></script>
   
 	<body style="height:100%;">
 	
+	<form action="j_spring_security_check" method="POST">
 	<div class="row" style="padding-top:100px">
 		<div class="well col-sm-4 col-sm-offset-4">
 			<div>
@@ -47,17 +47,20 @@
 			</div>
 			
 			<div>
-				<input class="form-control floating-label" type="text" id="username" placeholder="username"  maxlength="30" value="">
-				<input class="form-control floating-label" type="password" id="password" placeholder="password" maxlength="30" value="">
+				<input class="form-control floating-label" type="text" id="username" name="username" placeholder="username"  maxlength="30" value="">
+				<input class="form-control floating-label" type="password" id="password" name="password" placeholder="password" maxlength="30" value="">
 			</div>
 			
 			<br/>
 			<div class="login-notification">
-				<a class="btn btn-primary btn-block" style="background-color:#262729">Sign In</a>
+				<input class="btn btn-primary btn-block" style="background-color:#262729" name="submit" type="submit"
+					value="Sign In" />
 			</div>
 		</div>
 		<br/>
 	</div>
-	
+	<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
 	</body>
 </html>
