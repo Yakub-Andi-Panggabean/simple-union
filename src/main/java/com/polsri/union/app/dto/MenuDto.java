@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.polsri.union.app.util.constant.Util;
+
 public class MenuDto implements Serializable {
 
 	/**
@@ -14,6 +16,9 @@ public class MenuDto implements Serializable {
 	private String label;
 	private String parent;
 	private String relativeUrl;
+	private String state;
+	private String icon;
+	private String type;
 	private int active;
 	private Date createdDate;
 	private String createdBy;
@@ -34,6 +39,13 @@ public class MenuDto implements Serializable {
 		this.updatedDate = updatedDate;
 		this.updatedBy = updatedBy;
 		this.childs = childs;
+		this.icon = Util.ICON;
+		this.state = relativeUrl.substring(1).replace("/", ".");
+		if (parent.isEmpty() || parent == "") {
+			this.type = "toogle";
+		} else {
+			this.type = "link";
+		}
 	}
 
 	public MenuDto() {
@@ -119,6 +131,39 @@ public class MenuDto implements Serializable {
 
 	public void setChilds(List<MenuDto> childs) {
 		this.childs = childs;
+	}
+
+	public String getState() {
+		return relativeUrl.substring(1).replace("/", ".");
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = Util.ICON;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getType() {
+		if (parent == null || parent == "") {
+			type = "toogle";
+		} else {
+			type = "link";
+		}
+		return type;
 	}
 
 }

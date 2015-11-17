@@ -6,7 +6,9 @@
   .factory('menu', [
       '$location',
       '$rootScope',
-      function ($location) {
+      '$http',
+      '$q',
+      function ($location,$http,$q) {
 
         var sections = [{
             name: 'Beers',
@@ -50,12 +52,26 @@
                   icon: 'fa fa-map-marker'
                 }]
             }];
+        
+        
+        var obj = {};
+        obj.getOverallUserInfo = function(){ 
+            return $http.get('/api/menu').then(function(response){   //returns a call back
+                this.userDetails = response.data;                                       //store data of 1st call in this.userDetails
+                return $http.get('/api/menu').then(function(response){ //returns a call back
+                    this.userDetails.friends = response.data.userfriends;               //Append the response of second call to the data we stored previously
+                    return this.userDetails;                                    //Return processed result.
+                });
+            });
+        }
+        
+        alert(obj.getOverallUserInfo);
 
         var self;
 
         return self = {
           sections: sections,
-
+          data:obj,
           toggleSelectSection: function (section) {
             self.openedSection = (self.openedSection === section ? null : section);
           },

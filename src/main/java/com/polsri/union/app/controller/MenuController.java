@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.polsri.union.app.domain.Menu;
 import com.polsri.union.app.dto.MenuDto;
 import com.polsri.union.app.service.MenuService;
+import com.polsri.union.app.util.constant.Util;
 import com.polsri.union.app.util.response.ErrorCategory;
 import com.polsri.union.app.util.response.GenericMultipleResponse;
 import com.polsri.union.app.util.response.GenericResponse;
@@ -145,11 +146,13 @@ public class MenuController {
 			dto = new MenuDto();
 			Menu menu = service.findMenuById(id);
 			BeanUtils.copyProperties(menu, dto);
+			dto.setState(dto.getState().replace("/", "."));
 			if (dto.getParent() == null) {// if null its mean that it is a
 											// parent
 				for (Menu child : service.findChildMenu(menu.getMenuId())) {
 					childMenu = new MenuDto();
 					BeanUtils.copyProperties(child, childMenu);
+					childMenu.setState(childMenu.getRelativeUrl().replace("/", "."));
 					childs.add(childMenu);
 				}
 				dto.setChilds(childs);
@@ -172,8 +175,7 @@ public class MenuController {
 		return new ResponseEntity<GenericSingleResponse<MenuDto>>(response, httpStatus);
 	}
 
-	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET, produces = {
-			MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
 	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu() {
 		MenuDto dto = null;
@@ -188,6 +190,7 @@ public class MenuController {
 			for (Menu menu : service.findAllMenus()) {
 				dto = new MenuDto();
 				BeanUtils.copyProperties(menu, dto);
+				dto.setIcon(Util.ICON);
 				activeMenus.add(dto);
 			}
 

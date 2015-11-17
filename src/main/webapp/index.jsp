@@ -5,11 +5,10 @@
 	<meta http-equiv="Pragma" content="no-cache">
     <title>Black Parade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet">
 	<link href="resources/css/ripples.min.css" rel="stylesheet">
 	<link href="resources/css/material-wfont.min.css" rel="stylesheet">
-	
-    <link rel="shortcut icon" href="assets/flat_ui/images/favicon.ico">
+    <!-- <link rel="shortcut icon" href="resources/images/favicon.ico"> -->
 	
 	<style>
 		body {
@@ -30,7 +29,7 @@
   </head>
 
     <script src="resources/js/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/ripples.min.js"></script>
 	<script src="resources/js/material.min.js"></script>
   
