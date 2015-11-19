@@ -27,6 +27,7 @@ li.abn-tree-row.ng-enter {
 li.abn-tree-row.ng-enter-active{
   opacity: 1;
   max-height:30px;
+  border:0px;
 }
 
 .abn-tree-animate-leave,

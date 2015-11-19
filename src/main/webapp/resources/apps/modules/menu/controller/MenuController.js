@@ -13,33 +13,17 @@ if (angular.version.full.indexOf("1.2") >= 0) {
 
 module = angular.module('UnionApp.menu.controller', deps);
 
-module.controller('MenuController', function($scope, $timeout,MenuService) {
-  var apple_selected, tree, treedata_avm;
-  $scope.my_tree_handler = function(branch) {
-    var _ref;
-    $scope.output = "You selected: " + branch.label;
-    if ((_ref = branch.data) != null ? _ref.description : void 0) {
-      return $scope.output += '(' + branch.data.description + ')';
-    }
+module.controller('MenuController', function($scope, $timeout,$location,MenuService) {
+  var tree, treedata_avm;
+  
+  $scope.choosePage=function(branch){
+	  $location.path(branch.relativeUrl);
   };
-  apple_selected = function(branch) {
-    return $scope.output = "APPLE! : " + branch.label;
-  };
+
+  //mock data
   treedata_avm = [
     {
-
-      "menuId": "1a40147050164b1ea4f40a3c55a072fa",
-      "label": "purchasing",
-      "parent": "",
-      "relativeUrl": "/mama/apa/kabar4",
-      "state": "mama.apa.kabar4",
-      "icon": "fa fa-file-o",
-      "type": "link",
-      "active": 1,
-      "createdDate": 1355245200000,
-      "createdBy": "xxx",
-      "updatedDate": null,
-      "updatedBy": null,
+      label: 'purchasing',
       children: [
         {
           label: 'Order',
@@ -76,11 +60,13 @@ module.controller('MenuController', function($scope, $timeout,MenuService) {
     }
   ];
   
-  
+  //replacing harcoded menu with menu from database
   MenuService.getAvailableMenus().then(function(response){
 	  console.log(response.data.contents);
 	  $scope.my_data=response.data.contents;
   });
+  
+  
   $scope.my_data = treedata_avm;
 });
 

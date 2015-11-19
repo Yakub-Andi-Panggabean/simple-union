@@ -3,11 +3,11 @@
 
 body {
   font-family: 'Metrophobic', sans-serif;
-  background-color: #FCFCFC;
+  background-color: #FFFFFF;
 }
 
 .header{
-	background-color:#efefef;
+	background-color:rgb(63,81,181);
 }
 
 ul {
@@ -15,16 +15,17 @@ ul {
    margin-left: 0;
    padding-left: 1em;
    text-indent: -1em;
+   border:none;
 }
 
 #menu_container{
 	padding:0px 0px 0px 15px;
-	color:#336E7B;
+	color:rgb(63,81,181);
 	border-left:1px solid #FCFCFC;
-	font-size: small;
+	font-size: medium;
 	border-left:2px solid #efefef;
 	border-right:2px solid #efefef;
-	height: 490px;
+	
 }
 
 .content_container{
@@ -39,3 +40,13 @@ ul {
 .footer{
 	background-color: #c0c0c0;
 }
+
+.view_container{
+	 padding: 20px 120px 60px 120px;
+}
+
+.view_content{
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+

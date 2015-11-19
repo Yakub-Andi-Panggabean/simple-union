@@ -120,14 +120,13 @@ public class RoleMenuController {
 		return new ResponseEntity<GenericSingleResponse<RoleDto>>(response, httpStatus);
 	}
 
-	@RequestMapping(value = MENU_PARAMETERIZED_PATH, consumes = {
-			MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET, produces = {
-					MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = MENU_PARAMETERIZED_PATH, method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
 	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu(@PathVariable("id") String roleId) {
 		MenuDto dto = null;
 		List<MenuDto> activeMenus = new ArrayList<MenuDto>();
-		List<MenuDto> childs = new ArrayList<MenuDto>();
+		List<MenuDto> children = new ArrayList<MenuDto>();
 		List<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		ErrorCategory errorCategory = null;
@@ -145,11 +144,11 @@ public class RoleMenuController {
 					if (menu.getParent() == null) {
 						List<Menu> listOfChild = menuService.findChildMenu(menu.getMenuId());
 						for (Menu child : listOfChild) {
-							childs.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
+							children.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
 									child.getRelativeUrl(), child.getActive(), child.getCreatedDate(),
 									child.getCreatedBy(), child.getUpdatedDate(), child.getUpdatedBy(), null));
 						}
-						menu.setChilds(childs);
+						menu.setchildren(children);
 					}
 				}
 			}

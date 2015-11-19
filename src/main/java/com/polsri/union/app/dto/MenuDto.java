@@ -24,10 +24,10 @@ public class MenuDto implements Serializable {
 	private String createdBy;
 	private Date updatedDate;
 	private String updatedBy;
-	private List<MenuDto> childs;
+	private List<MenuDto> children;
 
 	public MenuDto(String menuId, String label, String parent, String relativeUrl, int active, Date createdDate,
-			String createdBy, Date updatedDate, String updatedBy, List<MenuDto> childs) {
+			String createdBy, Date updatedDate, String updatedBy, List<MenuDto> children) {
 		super();
 		this.menuId = menuId;
 		this.label = label;
@@ -38,7 +38,7 @@ public class MenuDto implements Serializable {
 		this.createdBy = createdBy;
 		this.updatedDate = updatedDate;
 		this.updatedBy = updatedBy;
-		this.childs = childs;
+		this.children = children;
 		this.icon = Util.ICON;
 		this.state = relativeUrl.substring(1).replace("/", ".");
 		if (parent.isEmpty() || parent == "") {
@@ -125,12 +125,12 @@ public class MenuDto implements Serializable {
 		this.updatedBy = updatedBy;
 	}
 
-	public List<MenuDto> getChilds() {
-		return childs;
+	public List<MenuDto> getchildren() {
+		return children;
 	}
 
-	public void setChilds(List<MenuDto> childs) {
-		this.childs = childs;
+	public void setchildren(List<MenuDto> children) {
+		this.children = children;
 	}
 
 	public String getState() {

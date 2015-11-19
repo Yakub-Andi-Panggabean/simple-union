@@ -137,7 +137,7 @@ public class MenuController {
 	public ResponseEntity<GenericSingleResponse<MenuDto>> findMenuById(@PathVariable("menuId") String id) {
 		MenuDto dto = null;
 		MenuDto childMenu = null;
-		List<MenuDto> childs = new ArrayList<MenuDto>();
+		List<MenuDto> children = new ArrayList<MenuDto>();
 		List<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		ErrorCategory errorCategory = null;
@@ -153,9 +153,9 @@ public class MenuController {
 					childMenu = new MenuDto();
 					BeanUtils.copyProperties(child, childMenu);
 					childMenu.setState(childMenu.getRelativeUrl().replace("/", "."));
-					childs.add(childMenu);
+					children.add(childMenu);
 				}
-				dto.setChilds(childs);
+				dto.setchildren(children);
 			}
 			httpStatus = HttpStatus.OK;
 		} catch (Exception ex) {
@@ -180,7 +180,7 @@ public class MenuController {
 	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu() {
 		MenuDto dto = null;
 		List<MenuDto> activeMenus = new ArrayList<MenuDto>();
-		List<MenuDto> childs = new ArrayList<MenuDto>();
+		List<MenuDto> children = new ArrayList<MenuDto>();
 		List<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		ErrorCategory errorCategory = null;
@@ -199,11 +199,11 @@ public class MenuController {
 					if (menu.getParent() == null) {
 						List<Menu> listOfChild = service.findChildMenu(menu.getMenuId());
 						for (Menu child : listOfChild) {
-							childs.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
+							children.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
 									child.getRelativeUrl(), child.getActive(), child.getCreatedDate(),
 									child.getCreatedBy(), child.getUpdatedDate(), child.getUpdatedBy(), null));
 						}
-						menu.setChilds(childs);
+						menu.setchildren(children);
 					}
 				}
 			}
