@@ -9,9 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = HomeController.BASE_PATH)
 public class HomeController {
 
-	public static final String BASE_PATH = "/home";
+	public static final String BASE_PATH = "/";
+	public static final String BASE_PATH_HOME = BASE_PATH + "home";
 
 	@RequestMapping(method = RequestMethod.GET)
+	public String showIndex(Model model) {
+		return "index";
+	}
+
+	@RequestMapping(value = BASE_PATH_HOME, method = RequestMethod.GET)
 	public String showHomepage(Model model) {
 		return "home";
 	}

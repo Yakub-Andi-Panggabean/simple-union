@@ -1,0 +1,33 @@
+<md-dialog>
+ <div layout="column" class="md-inline-form">
+      <md-toolbar>
+         <div class="md-toolbar-tools">
+              <span>Add New Menu</span>
+          </div>
+      </md-toolbar>
+      <md-content layout-padding>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Label</label>
+         <input ng-model="label" placeholder="Label">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Relative Url</label>
+          <input ng-model="relativeUrl" placeholder="Relative Url">
+        </md-input-container>
+      </div>
+       <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Parent</label>
+          <input ng-model="parent" placeholder="Parent">
+        </md-input-container>
+        <md-input-container flex>
+        </md-input-container>
+      </div>
+     <div class="md-actions" layout="row"> <span flex></span> 
+          <md-button > Cancel </md-button>
+          <md-button  class="md-primary" ng-click='addNewMenu()'> Save </md-button> 
+      </div>
+  </md-content>
+</div>
+</md-dialog>

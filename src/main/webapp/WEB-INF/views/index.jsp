@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="UnionAppLogin">
   <head>
     <meta charset="utf-8">
 	<meta http-equiv="Pragma" content="no-cache">
@@ -33,7 +33,7 @@
 	<script src="resources/js/ripples.min.js"></script>
 	<script src="resources/js/material.min.js"></script>
   
-	<body style="height:100%;">
+	<body style="height:100%;" ng-controller="LoginController">
 	
 	<div class="row" style="padding-top:100px">
 		<div class="col-sm-4 col-sm-offset-4">
@@ -45,13 +45,13 @@
 			</div>
 			<div style="padding:2%">
 			<div>
-				<input class="form-control floating-label" style="color:#13467F;" type="text" id="username" name="username" placeholder="username"  maxlength="30" value="">
-				<input class="form-control floating-label" style="color:#13467F;" type="password" id="password" name="password" placeholder="password" maxlength="30" value="">
+				<input ng-model="username" class="form-control floating-label" style="color:#13467F;" type="text" id="username" name="username" placeholder="username"  maxlength="30" value="">
+				<input ng-model="password" class="form-control floating-label" style="color:#13467F;" type="password" id="password" name="password" placeholder="password" maxlength="30" value="">
 			</div>
 			
 			<br/>
 			<div class="login-notification">
-				<input class="btn btn-primary btn-block" style="background-color:#13467F" name="submit" type="submit"
+				<input class="btn btn-primary btn-block" style="background-color:#13467F" name="submit" type="submit" ng-click="signin()"
 					value="Sign In" />
 			</div>
 			</div>
@@ -60,4 +60,13 @@
 		</div>
 	</div>
 	</body>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-cookies.min.js"></script>
+	
+  <!-- Login App -->
+  <script  src="resources/apps/modules/login/LoginModule.js"></script>
+  <script  src="resources/apps/modules/login/controller/LoginController.js"></script>
+  <script  src="resources/apps/modules/login/service/BasicAuthService.js"></script>
+  
+	 
 </html>

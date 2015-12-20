@@ -5,7 +5,7 @@
 
 var module, deps;
 
-deps = ['angularBootstrapNavTree','ngAnimate','UnionApp.menu.service'];
+deps = ['angularBootstrapNavTree','ngAnimate','UnionApp.menu.service','ngCookies'];
 
 if (angular.version.full.indexOf("1.2") >= 0) {
   deps.push('ngAnimate');
@@ -13,9 +13,13 @@ if (angular.version.full.indexOf("1.2") >= 0) {
 
 module = angular.module('UnionApp.menu.controller', deps);
 
-module.controller('MenuController', function($scope, $timeout,$location,MenuService) {
+module.run(function($http,$cookieStore) {
+	  $http.defaults.headers.common.Authorization = $cookieStore.get('credential');
+});
+
+
+module.controller('MenuController', function($scope, $timeout,$location,$cookieStore,MenuService) {
   var tree, treedata_avm;
-  
   $scope.choosePage=function(branch){
 	  $location.path(branch.relativeUrl);
   };

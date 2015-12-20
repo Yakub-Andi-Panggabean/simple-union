@@ -5,25 +5,22 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-
-	<http auto-config="true">
-	    <intercept-url pattern="/index.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-	    <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/**" access="ROLE_USER" />
-		<form-login login-page='/index.jsp'
-			authentication-failure-url="/index.jsp?error=true"
-			username-parameter="username" password-parameter="password"
-			default-target-url="/home"/>
-		<!-- enable csrf protection -->
-		<csrf/>
+	
+	<http use-expressions="true" create-session="stateless" entry-point-ref="securityEntryPoint" >
+	   <custom-filter ref="restAuthenticationFilter" position="BASIC_AUTH_FILTER" />
+	     <intercept-url pattern="/**" access="permitAll" />
+	   <intercept-url pattern="/api/**" access="authenticated" />
 	</http>
 
-	<authentication-manager>
-	  <authentication-provider>
-	    <user-service>
-		<user name="admin" password="123456" authorities="ROLE_USER" />
-	    </user-service>
-	  </authentication-provider>
-	</authentication-manager>
-
+   <beans:bean id="restAuthenticationFilter" class="com.polsri.union.app.service.component.security.RestAuthenticationFilter">
+      <beans:constructor-arg name="authenticationManager" ref="authenticationManager" />
+   </beans:bean>
+   
+   <authentication-manager alias="authenticationManager">
+      <authentication-provider ref="restAuthenticationProvider" />
+   </authentication-manager>
+   	
+   <beans:bean id="securityEntryPoint" class="com.polsri.union.app.service.component.security.SecurityEntryPoint"/>
+   <beans:bean id="restAuthenticationProvider" class="com.polsri.union.app.service.component.security.RestAuthenticationProvider"/>
+	
 </beans:beans>

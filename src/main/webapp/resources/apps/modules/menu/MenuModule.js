@@ -4,6 +4,6 @@
 
 var module,dependencies;
 
-dependencies=['angularBootstrapNavTree','UnionApp.menu.controller'];
+dependencies=['angularBootstrapNavTree','UnionApp.menu.controller','UnionApp.menu.addcontroller'];
 
 module=angular.module('MenuModule',dependencies);

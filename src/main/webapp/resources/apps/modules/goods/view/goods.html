@@ -1,0 +1,134 @@
+<div ng-controller="GoodsController" ng-init="initializeView()" layout="column" class="md-inline-form">
+      <md-toolbar>
+         <div class="md-toolbar-tools">
+           <h2>
+              <span>Master > Goods</span>
+            </h2>
+          </div>
+      </md-toolbar>
+      <md-content layout-padding>
+      <div layout layout-sm="column">
+        <md-input-container>
+          <label>Goods Code</label>
+          <input ng-model="goods.goodsCode">
+        </md-input-container>
+        &nbsp;
+        <md-input-container flex>
+          <label>Goods Name</label>
+          <input ng-model="goods.goodsName">
+        </md-input-container>
+      </div>
+        <div layout layout-sm="column">
+            <md-input-container>
+        <label>Supplier</label>
+        <md-select ng-model="goods.supplier">
+          <md-option ng-repeat="supplier in suppliers" ng-if="supplier.active == 1" value="{{supplier.supplierId}}">
+            {{supplier.supplierName}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+        &nbsp;&nbsp;
+          <md-input-container>
+        <label>Category</label>
+        <md-select ng-model="goods.category">
+          <md-option ng-repeat="category in categories" ng-if="category.active == 1" value="{{category.categoryId}}">
+            {{category.categoryName}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      &nbsp;&nbsp;
+         <md-input-container class="md-block">
+          <label>Brand</label>
+           <input ng-model="goods.brand">
+        </md-input-container>
+        </div>
+        <div layout layout-sm="column" flex>
+             <md-button class="md-raised md-primary button-custom" ng-click="addNewGoods()">Add</md-button>
+           </md-button>
+             <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+        </div> 
+       <br/> 
+        <div layout layout-sm="column">
+          <div layout="row" flex>  
+       	    <table class="table table-hover" style="width:100%;">
+              <thead>
+                <tr>
+                 <th>
+                   Active Status
+                 </th>
+                 <th>
+                   Goods Code
+                 </th>
+                 <th>
+                   Goods Name
+                 </th>
+                 <th>
+                   Supplier
+                 </th>
+                 <th>
+                   Category
+                 </th>
+                 <th>
+                   Brand
+                 </th> 
+                 <th>
+                   Action
+                 </th>
+              </tr>
+           </thead>
+           <tbody>
+             <tr ng-repeat="goods in goodsList">
+             	<td ng-if="goods.active == 0">
+             	   <md-switch ng-model="isFalse" aria-label="Switch 1" style="margin-top:2px;margin-bottom:2px;" ng-change="updateGoods(goods,goods.active)">
+                   </md-switch>
+                </td>
+                <td ng-if="goods.active == 1">
+             	   <md-switch ng-model=isTrue aria-label="Switch 1" style="margin-top:2px;margin-bottom:2px;" ng-change="updateGoods(goods,goods.active)">
+                </md-switch>
+                </td>
+                <td>
+                   <label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{goods.goodsCode}}</label>
+                   <md-input-container  ng-show="isEditing" ng-dblclick="isEditing=!isEditing"  ng-show="isEditing">
+                       <label>Goods Code</label>
+                       <input ng-model="goods.goodsCode">
+                   </md-input-container>
+                </td>
+                <td>
+                   <label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{goods.goodsName}}</label>
+                </td>
+                <td>
+                  <label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{goods.supplier}}</label>
+                  <md-select ng-model="goods.newSupplierId" ng-show="isEditing"  ng-change="isEditing=!isEditing">
+          		         <md-option ng-repeat="supplier in suppliers" ng-if="supplier.active == 1" value="{{supplier.supplierId}}">
+           				 {{supplier.supplierName}}
+         				 </md-option>
+        			</md-select>
+                </td>
+                <td>
+                   <label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{goods.category}}</label>
+                   <md-select ng-model="goods.newCategoryId" ng-show="isEditing"  ng-change="isEditing=!isEditing" >
+          		         <md-option ng-repeat="category in categories"  ng-show="isEditing" ng-if="category.active == 1" value="{{category.categoryId}}">
+           				 {{category.categoryName}}
+         				 </md-option>
+        			</md-select>
+                </td>
+                 <td>
+                   {{goods.brand}}
+                </td> 
+             	<td>
+             	<md-button class="md-icon-button" aria-label="Settings">
+                   <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);" ng-click="deleteGoods(goods.goodsId)"></md-icon>
+                   </md-button>
+                   <md-button class="md-icon-button" aria-label="Settings">
+                   <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);" ng-click="updateGoods(goods)"></md-icon>
+                  </md-button>
+             	</td>
+             </tr>
+            </tbody>
+       </table>
+       		</div>
+       </div>  
+    </form>
+  </md-content>
+</div>
