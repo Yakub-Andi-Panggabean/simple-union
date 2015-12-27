@@ -6,7 +6,7 @@
             </h2>
           </div>
       </md-toolbar>
-      <md-content layout-padding style="bg-color:#00b2b3">
+      <md-content layout-padding style="bg-color:#00b2b3;height:15%;padding:0px 35px 0px 35px;">
        <div layout layout-sm="column">
        <div layout="row" style="padding-top:15px;">
            <md-button class="md-icon-button" aria-label="Settings" ng-click="showAdd($event)">
@@ -19,11 +19,7 @@
         </md-input-container>
         <md-input-container flex>
           <label>Goods Name</label>
-          <input ng-model="myDate" disabled>
-        </md-input-container>
-        <md-input-container class="md-block">
-           <label>Price</label>
-           <input ng-model="user.address" disabled>
+          <input ng-model="discount.goodsName" disabled>
         </md-input-container>
       </div>
        <div layout layout-sm="column">
@@ -31,10 +27,11 @@
            <label>Discount</label>
            <input ng-model="user.address">
         </md-input-container>
-      </div>
-      <div layout layout-sm="column">
-          <div layout="row" style="padding-top:20px;">
-              <label>Start Date</label>
+          <div layout="row" flex="10">
+             <span></span>
+          </div>
+         <div layout="row" style="padding-top:20px;">
+              <label>Start</label>
           </div>
           <div layout="row">
               <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
@@ -43,7 +40,7 @@
              <span></span>
           </div>
            <div layout="row" style="padding-top:20px;">
-              <label>End Date</label>
+              <label>End</label>
           </div>
           <div layout="row">
               <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
@@ -55,56 +52,37 @@
            <textarea  ng-model="theMax" columns="1" md-maxlength="150" rows="5"></textarea>
         </md-input-container>
       </div>
-      <br/>
-     <div layout layout-sm="column" flex>
+           <div layout layout-sm="column" flex>
            <md-button class="md-raised md-primary button-custom">Set </md-button>
            </md-button>
      </div>
-     <br/>
-     <div layout layout-sm="column">
-       <div layout="row" flex  style="background-color:#e0e0d1;" layout-padding>
-           <div flex>
-             Supplier Name
-           </div>
-           <div flex hide-sm>
-             Pic
-           </div>
-          <div flex>
-             Address
-           </div>
-           <div flex hide-sm>
-             Active
-           </div>
-           <div flex hide-sm>
-             Action
-           </div>
+      </md-content>
+      <md-content layout-padding style="bg-color:#00b2b3;height:200px;padding:10px 35px 0px 35px;">
+      <div layout layout-sm="column" flex>
+       <div layout="row" flex>  
+       <table class="table table-hover" style="width:150%;">
+         <thead>
+           <tr>
+             <th>Goods Name</th>
+             <th>Periode</th>
+             <th>Discount</th>
+             <th>Description</th>
+             <th>Date Created</th>
+             <th>Last Update</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td>Goods Name</td>
+             <td>Periode</td>
+             <td>Discount</td>
+             <td>Description</td>
+             <td>Date Created</td>
+             <td>Last Update</td>
+           </tr>
+         </tbody>
+       </table>
        </div>
       </div>
-         <div layout layout-sm="column">
-      <div layout="row" flex layout-padding style="border-bottom:1px solid #e0e0d1">
-           <div flex>
-             Category Name
-           </div>
-            <div flex hide-sm>
-             Pic
-           </div>
-          <div flex>
-             Address
-           </div>
-           <div flex style="padding:0px;">
-            <md-switch ng-model="data.cb1" aria-label="Switch 1">
-            </md-switch>
-           </div>
-            <div flex hide-sm>
-            <md-button class="md-icon-button" aria-label="Settings" ng-click="showAdd($event)">
-             <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-           </md-button>
-            <md-button class="md-icon-button" aria-label="Settings" ng-click="showAdd($event)">
-             <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-         </md-button>
-           </div>
-       </div>
-       </div>  
-    </form>
-  </md-content>
+   </md-content>
 </div>

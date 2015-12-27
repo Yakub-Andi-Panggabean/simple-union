@@ -322,16 +322,4 @@ table th[class*="col-"] {
 }
 
 
-#LoadingDiv{
-	margin:0px 0px 0px 0px;
-	position:fixed;
-	height: 100%;
-	z-index:9999;
-	padding-top:200px;
-	padding-left:50px;
-	width:100%;
-	clear:none;
-	background:url(/img/transbg.png);
-	/*background-color:#666666;
-	border:1px solid #000000;*/
-	}
+#cover{ position:fixed; top:0; left:0; background:rgba(0,0,0,0.6); z-index:5; width:100%; height:100%; display:none; }

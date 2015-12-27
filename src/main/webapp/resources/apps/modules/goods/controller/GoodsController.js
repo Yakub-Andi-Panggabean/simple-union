@@ -213,4 +213,8 @@ module.controller('GoodsController',function($cookies,$cookieStore,$mdToast,$sco
 		return active;
 	}
 	
+	  $scope.findGoods=function(){
+		  console.log("hit");
+	  }
+	
 });

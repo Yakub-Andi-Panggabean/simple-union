@@ -97,6 +97,7 @@
   <!-- Stock Module -->
   <script  src="resources/apps/modules/stock/StockModule.js"></script>
   <script  src="resources/apps/modules/stock/controller/StockController.js"></script>
+  <script  src="resources/apps/modules/stock/service/StockService.js"></script>
   
   <!-- Goods Module -->
   <script  src="resources/apps/modules/goods/GoodsModule.js"></script>
@@ -109,6 +110,11 @@
   <script  src="resources/apps/modules/supplier/SupplierModule.js"></script>
   <script  src="resources/apps/modules/supplier/controller/SupplierController.js"></script>
   <script  src="resources/apps/modules/supplier/service/SupplierService.js"></script>
+  
+    <!-- Price Module -->
+  <script  src="resources/apps/modules/price/PriceModule.js"></script>
+  <script  src="resources/apps/modules/price/controller/PriceController.js"></script>
+  <script  src="resources/apps/modules/price/service/PriceService.js"></script>
 </body>
 
 </html>

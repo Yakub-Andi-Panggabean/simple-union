@@ -1,0 +1,32 @@
+<md-dialog ng-init="retrieveAllGoods()" style="max-width:800px;max-height:810px;width:600px;width:100%;">
+ <div layout="column" class="md-inline-form">
+      <md-content layout-padding>
+      <div layout layout-sm="column">
+          <div layout="row" flex>  
+       	    <table class="table table-hover" style="width:100%;">
+              <thead>
+                <tr>
+                 <th>
+                   Goods Code
+                 </th>
+                 <th>
+                   Goods Name
+                 </th>
+              </tr>
+           </thead>
+           <tbody ng-controller="StockRootController">
+             <tr ng-repeat="goods in goodsList" ng-if="goods.active == 1" ng-click="findGoods(goods)">
+                <td>
+                  <label>{{goods.goodsCode}}</label>
+                </td>
+                <td>
+                  <label>{{goods.goodsName}}</label>
+                </td >
+             </tr>
+            </tbody>
+          </table>
+       	</div>
+       </div>  
+  </md-content>
+</div>
+</md-dialog>
