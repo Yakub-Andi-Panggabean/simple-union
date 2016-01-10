@@ -126,7 +126,7 @@ public class RoleMenuController {
 	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu(@PathVariable("id") String roleId) {
 		MenuDto dto = null;
 		List<MenuDto> activeMenus = new ArrayList<MenuDto>();
-		List<MenuDto> children = new ArrayList<MenuDto>();
+		List<MenuDto> children = null;
 		List<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		ErrorCategory errorCategory = null;
@@ -143,6 +143,7 @@ public class RoleMenuController {
 				for (MenuDto menu : activeMenus) {
 					if (menu.getParent() == null) {
 						List<Menu> listOfChild = menuService.findChildMenu(menu.getMenuId());
+						children = new ArrayList<MenuDto>();
 						for (Menu child : listOfChild) {
 							children.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
 									child.getRelativeUrl(), child.getActive(), child.getCreatedDate(),
@@ -154,7 +155,11 @@ public class RoleMenuController {
 			}
 
 			httpStatus = HttpStatus.OK;
-		} catch (Exception ex) {
+		} catch (
+
+		Exception ex)
+
+		{
 			ex.printStackTrace();
 			if (ex instanceof NullPointerException) {
 				httpStatus = HttpStatus.NOT_FOUND;

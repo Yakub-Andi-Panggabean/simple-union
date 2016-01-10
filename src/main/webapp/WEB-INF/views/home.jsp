@@ -111,10 +111,20 @@
   <script  src="resources/apps/modules/supplier/controller/SupplierController.js"></script>
   <script  src="resources/apps/modules/supplier/service/SupplierService.js"></script>
   
-    <!-- Price Module -->
+  <!-- Price Module -->
   <script  src="resources/apps/modules/price/PriceModule.js"></script>
   <script  src="resources/apps/modules/price/controller/PriceController.js"></script>
   <script  src="resources/apps/modules/price/service/PriceService.js"></script>
+  
+  <!-- Discount Module -->
+  <script  src="resources/apps/modules/discount/DiscountModule.js"></script>
+  <script  src="resources/apps/modules/discount/controller/DiscountController.js"></script>
+  <script  src="resources/apps/modules/discount/service/DiscountService.js"></script>
+  
+  <!-- Home Module -->
+  <script  src="resources/apps/modules/order/OrderModule.js"></script>
+  <script  src="resources/apps/modules/order/controller/OrderController.js"></script>
+  <script  src="resources/apps/modules/order/service/OrderService.js"></script>
 </body>
 
 </html>

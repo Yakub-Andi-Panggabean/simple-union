@@ -45,8 +45,8 @@ public class MenuDao {
 	}
 
 	public List<Menu> findChildMenu(String parentId) {
-		return jdbcTemplate.query(new Menu().generateSelectByQuery(false, "parent_id"), new Object[] { parentId },
-				Menu.obtainRowMapper());
+		return jdbcTemplate.query(new Menu().generateSelectByQuery(false, "parent_id").concat("and active = 1"),
+				new Object[] { parentId }, Menu.obtainRowMapper());
 	}
 
 }

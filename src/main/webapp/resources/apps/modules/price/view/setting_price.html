@@ -1,12 +1,13 @@
-<div ng-controller="PriceController" ng-init="retriveAllPrices()" layout="column" class="md-inline-form">
-      <md-toolbar>
+<div ng-controller="PriceController" ng-init="retriveAllPrices()" layout="column" class="md-whiteframe-12dp">
+      <md-toolbar class="md-whiteframe-24dp">
          <div class="md-toolbar-tools">
            <h2>
               <span>Price > Setting Price</span>
             </h2>
           </div>
       </md-toolbar>
-      <md-content layout-padding style="bg-color:#00b2b3">
+      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <div layout-padding class="md-whiteframe-1dp">
        <input type="hidden" id="price-goods-id"/>
       <div layout layout-sm="column">
         <div layout="row" style="padding-top:15px;">
@@ -31,9 +32,10 @@
              <md-button class="md-raised md-primary button-custom" ng-click="processingPrice(price)">Set Price</md-button>
            </md-button>
         </div>
-        <br/>
-        <div layout layout-sm="column" flex>
-       <div layout="row" flex>  
+        </div>
+        <div layout="column" class="md-whiteframe-1dp">
+       <div flex>  <h3 class="md-subhead" >Price List</h3></div>
+         <div flex layout-padding class="md-whiteframe-6dp">
        <table class="table table-hover" style="width:100%;">
          <thead>
            <tr>

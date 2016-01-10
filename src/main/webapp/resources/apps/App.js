@@ -1,3 +1,3 @@
  'use strict';
-var mainModule=angular.module('UnionApp',['md.data.table','MenuModule','NavigationModule','StockModule','GoodsModule','SupplierModule','PriceModule']);
+var mainModule=angular.module('UnionApp',['md.data.table','MenuModule','NavigationModule','StockModule','GoodsModule','SupplierModule','PriceModule','DiscountModule','OrderModule']);
 

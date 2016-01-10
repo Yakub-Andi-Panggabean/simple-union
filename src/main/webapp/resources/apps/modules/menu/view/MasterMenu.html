@@ -3,47 +3,83 @@
 <md-toolbar>
          <div class="md-toolbar-tools">
            <h2>
-              <span>Master > Menu</span>
+              <span>Setting > Menu</span>
             </h2>
           </div>
       </md-toolbar>
   <br/>
  <div layout-padding >
- <md-data-table-toolbar style="background-color:#f0f0f0;" ng-controller="MasterMenuController">
-  <h2 class="md-title">Menu</h2>
-  <span flex></span>
-  <md-button class="md-icon-button" aria-label="Settings" ng-click="showAdd($event)">
-             <md-icon class="fa fa-plus" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-        </md-button>
-</md-data-table-toolbar>
- <md-data-table-container>
-  <table md-data-table md-row-select="selected" md-progress="deferred"  ng-tablescroll="options">
-    <thead md-order="query.order" md-trigger="onOrderChange" style="color:rgb(63,81,181);">
-      <tr>
-        <th name="Label"  order-by="name"></th>
-        <th name="Relative Url" order-by="calories.value"></th>
-        <th name="Parent"  order-by="fat.value"></th>
-        <th name="Active"  order-by="carbs.value"></th>
-        <th name="Created Date"  order-by="protein.value"></th>
-        <th name="Created By" order-by="sodium.value"></th>
-        <th name="Updated Date"  order-by="calcium.value"></th>
-        <th name="Updated By"  order-by="iron.value"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr md-auto-select ng-repeat="dessert in desserts.data">
-        <td>xx</td>
-        <td>xx</td>
-        <td>xxx</td>
-        <td>xxx</td>
-        <td>xxx</td>
-        <td>xxx</td>
-        <td show-unit>xx</td>
-        <td show-unit>xxx</td>
-      </tr>
-    </tbody>
-  </table>
-  </md-data-table-container>
+    <div layout="column" class="md-whiteframe-1dp">
+           	<div layout="row">
+  			   <div flex="90">
+  				  <h2 class="md-subhead" >Menu List</h2>
+  			   </div>
+  			   <div>
+  				 <md-button class="md-raised md-primary button-custom" >Add Menu</md-button>
+  			   </div>
+	       </div>
+	       <br/>
+           <div flex layout-padding class="md-whiteframe-6dp">
+       	    <table class="table table-hover" style="width:100%;">
+              <thead>
+                <tr>
+                 <th>
+                  Label
+                 </th>
+                 <th>
+                   Url
+                 </th>
+                 <th>
+                  Parent
+                 </th>
+                 <th>
+                   Active
+                 </th>
+                 <th>
+                   Created Date
+                 </th>
+                 <th>
+                   Created By
+                 </th> 
+                 <th>
+                   Updated Date
+                 </th>
+                 <th>
+                   Updated By
+                 </th>
+              </tr>
+           </thead>
+           <tbody>
+             <tr>
+             	 <td>
+                  Label
+                 </td>
+                 <td>
+                   Url
+                 </td>
+                 <td>
+                  Parent
+                 </td>
+                 <td>
+                   Active
+                 </td>
+                 <td>
+                   Created Date
+                 </td>
+                 <td>
+                   Created By
+                 </td> 
+                 <td>
+                   Updated Date
+                 </td>
+                 <td>
+                   Updated By
+                 </td>
+             </tr>
+            </tbody>
+       </table>
+       		</div>
+       </div>  
   </div>
   <br/>  
 </md-content>

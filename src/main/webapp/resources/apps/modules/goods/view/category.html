@@ -1,12 +1,13 @@
-<div ng-controller="MasterCategoryController" ng-init="retrieveAllCategories()" layout="column" class="md-inline-form">
-      <md-toolbar>
+<div ng-controller="MasterCategoryController" ng-init="retrieveAllCategories()" layout="column" class="md-whiteframe-12dp">
+      <md-toolbar class="md-whiteframe-24dp">
          <div class="md-toolbar-tools">
            <h2>
               <span>Master > Category</span>
             </h2>
           </div>
       </md-toolbar>
-      <md-content layout-padding>
+      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <div layout-padding class="md-whiteframe-1dp">
       <div layout layout-sm="column">
         <md-input-container>
           <label>Category Name</label>
@@ -18,9 +19,10 @@
            </md-button>
            <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
         </div> 
-       <br/> 
-       <div layout layout-sm="column">
-        <div layout="row" flex>  
+    </div>
+        <div layout="column" class="md-whiteframe-1dp">
+       <div flex>  <h3 class="md-subhead" >Category List</h3></div>
+         <div flex layout-padding class="md-whiteframe-6dp">
         <table class="table table-hover" style="width:100%;">
          <thead>
            <tr>
@@ -88,7 +90,9 @@
              </tr>
             </tbody>
        </table>
-       </div class="mask">
+       <br/>
+       </div>
+       <br/>
        </div>  
   </md-content>
 </div>

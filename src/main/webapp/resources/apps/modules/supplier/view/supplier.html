@@ -1,12 +1,13 @@
-<div ng-controller="MasterSupplierController" ng-init="retrieveAllSuppliers()" layout="column" class="md-inline-form">
-      <md-toolbar>
+<div ng-controller="MasterSupplierController" ng-init="retrieveAllSuppliers()" layout="column" class="md-whiteframe-12dp">
+      <md-toolbar class="md-whiteframe-24dp">
          <div class="md-toolbar-tools">
            <h2>
               <span>Master > Supplier</span>
             </h2>
           </div>
       </md-toolbar>
-      <md-content layout-padding style="bg-color:#00b2b3">
+      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+      <div layout-padding class="md-whiteframe-1dp">
       <div layout layout-sm="column">
       <md-input-container>
         </md-input-container>
@@ -30,10 +31,11 @@
            </md-button>
           <md-progress-circular id="#cover" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
         </div>
-        <br/>
-         <div layout layout-sm="column">
-       <div layout="row" flex>
-         <table class="table table-hover" style="width:100%;">
+        </div>
+       <div layout="column" class="md-whiteframe-1dp">
+         <div flex>  <h3 class="md-subhead" >Supplier List</h3></div>
+         <div flex layout-padding class="md-whiteframe-6dp">
+          <table class="table table-hover" style="width:100%;">
           <thead>
           	   <th>Active Status</th>
                <th>Supplier Name</th>

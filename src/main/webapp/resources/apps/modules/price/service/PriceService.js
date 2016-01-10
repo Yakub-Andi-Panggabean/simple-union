@@ -3,7 +3,8 @@
  */
 'use strict'
 
-var BASE_PATH="/api/price";
+var BASE_PATH="/api";
+var BASE_PATH_PRICE=BASE_PATH+"/price";
 
 var module,dependencies;
 
@@ -16,23 +17,23 @@ module.factory('PriceService',function($http){
 	var factories={};
 	
 	factories.setNewPrice=function(price){
-		return $http.post(BASE_PATH,price);
+		return $http.post(BASE_PATH_PRICE,price);
 	}
 	
 	factories.updatePrice=function(price){
-		return $http.put(BASE_PATH,price);
+		return $http.put(BASE_PATH_PRICE,price);
 	}
 	
 	factories.deletePrice=function(goodsId){
-		return $http.delete(BASE_PATH+"/"+goodsId);
+		return $http.delete(BASE_PATH_PRICE+"/"+goodsId);
 	}
 	
 	factories.findById=function(goodsId){
-		return $http.get(BASE_PATH+"/"+goodsId);
+		return $http.get(BASE_PATH_PRICE+"/"+goodsId);
 	}
 	
 	factories.findAll=function(){
-		return $http.get(BASE_PATH);
+		return $http.get(BASE_PATH_PRICE);
 	}
 	
 	return factories;

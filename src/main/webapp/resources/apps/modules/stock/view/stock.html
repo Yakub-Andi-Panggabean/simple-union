@@ -1,12 +1,12 @@
-<div ng-controller="StockRootController" ng-init="retriveAllStocks()" layout="column" class="md-inline-form">
-      <md-toolbar>
+<div ng-controller="StockRootController" ng-init="retriveAllStocks()" layout="column" class="md-whiteframe-12dp">
+      <md-toolbar  class="md-whiteframe-24dp">
          <div class="md-toolbar-tools">
            <h2>
-              <span>Master > Stock</span>
+              <span>Inventory > Stock</span>
             </h2>
           </div>
       </md-toolbar>
-      <md-content layout-padding style="bg-color:#00b2b3">
+      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
       <input type="hidden" id="stock-goods-id"/>
       <div layout layout-sm="column">
       <md-input-container style="padding-left:0px;padding-top:0px;">
@@ -45,38 +45,38 @@
             <md-button class="md-raised md-primary button-custom" ng-click="processingStock(stock)">Set</md-button>
         </div>
           </md-content>
-        <md-content>
-       <br/> 
-       <div layout layout-sm="column">
-        <div layout="row" flex>  
-        <table class="table table-hover" style="width:100%;">
-         <thead>
-           <tr>
-            <th>
-               Goods Name
-             </th>
-             <th>
-               Quantity
-             </th>
-             <th>
-               Max Quantity
-             </th>
-              <th>
-               Location
-             </th>
-             <th>
-               Sub Location
-             </th>
-             <th>
-               Last Update
-             </th>
-             <th>
-               Updated By
-             </th>
-           </tr>
-           </thead>
-           <tbody>
-             <tr ng-repeat="stock in stocks">
+        <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <div layout="column" class="md-whiteframe-1dp">
+          <div flex>  <h3 class="md-subhead" >Stock Data</h3></div>
+             <div  flex layout-padding class="md-whiteframe-6dp">  
+               <table class="table table-hover" style="width:100%;">
+                 <thead>
+                   <tr>
+                     <th>
+                        Goods Name
+                      </th>
+                      <th>
+                        Quantity
+                      </th>
+                      <th>
+                        Max Quantity
+                      </th>
+                       <th>
+                        Location
+                      </th>
+                      <th>
+                        Sub Location
+                      </th>
+                      <th>
+                        Last Update
+                      </th>
+                      <th>
+                        Updated By
+                      </th>
+                   </tr>
+              </thead>
+            <tbody>
+            <tr ng-repeat="stock in stocks">
                <td>
              	  {{stock.goodsName}}
                 </td>
@@ -101,7 +101,8 @@
              </tr>
             </tbody>
        </table>
-       </div class="mask">
+       </div >
+       </div>
            </md-content>
        </div>
 </div>

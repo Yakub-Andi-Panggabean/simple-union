@@ -146,13 +146,14 @@ public class MenuController {
 			dto = new MenuDto();
 			Menu menu = service.findMenuById(id);
 			BeanUtils.copyProperties(menu, dto);
-			dto.setState(dto.getState().replace("/", "."));
+			// dto.setState(dto.getState().replace("/", "."));
 			if (dto.getParent() == null) {// if null its mean that it is a
 											// parent
 				for (Menu child : service.findChildMenu(menu.getMenuId())) {
 					childMenu = new MenuDto();
 					BeanUtils.copyProperties(child, childMenu);
-					childMenu.setState(childMenu.getRelativeUrl().replace("/", "."));
+					// childMenu.setState(childMenu.getRelativeUrl().replace("/",
+					// "."));
 					children.add(childMenu);
 				}
 				dto.setchildren(children);

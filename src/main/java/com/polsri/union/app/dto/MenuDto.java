@@ -16,7 +16,6 @@ public class MenuDto implements Serializable {
 	private String label;
 	private String parent;
 	private String relativeUrl;
-	private String state;
 	private String icon;
 	private String type;
 	private int active;
@@ -40,12 +39,7 @@ public class MenuDto implements Serializable {
 		this.updatedBy = updatedBy;
 		this.children = children;
 		this.icon = Util.ICON;
-		this.state = relativeUrl.substring(1).replace("/", ".");
-		if (parent.isEmpty() || parent == "") {
-			this.type = "toogle";
-		} else {
-			this.type = "link";
-		}
+
 	}
 
 	public MenuDto() {
@@ -131,14 +125,6 @@ public class MenuDto implements Serializable {
 
 	public void setchildren(List<MenuDto> children) {
 		this.children = children;
-	}
-
-	public String getState() {
-		return relativeUrl.substring(1).replace("/", ".");
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public String getIcon() {
