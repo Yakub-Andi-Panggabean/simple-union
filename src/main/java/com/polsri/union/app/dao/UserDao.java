@@ -7,13 +7,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.polsri.union.app.domain.User;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 @Repository
 public class UserDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+        
 	public void insert(User user) {
 		jdbcTemplate
 				.update(user.generateInsertQuery(),
@@ -34,6 +35,7 @@ public class UserDao {
 	}
 
 	public User findUser(User user) {
+                System.out.println("user : "+user.getUsername());
 		return jdbcTemplate.queryForObject(user.generateSelectByQuery(false, "username"),
 				new Object[] { user.getUsername() }, User.obtainRowMapper());
 	}
@@ -46,5 +48,6 @@ public class UserDao {
 	public Long countTotalUser() {
 		return jdbcTemplate.queryForObject(new User().generateCountQuery(), Long.class);
 	}
+
 
 }

@@ -1,187 +1,187 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.polsri.union.app</groupId>
-  <artifactId>polsri-union-apps</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>polsri-union-apps Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.polsri.union.app</groupId>
+    <artifactId>polsri-union-apps</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>polsri-union-apps Maven Webapp</name>
+    <url>http://maven.apache.org</url>
   
-  <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.mvc.version>4.1.6.RELEASE</spring.mvc.version>
-		<spring.web.version>4.1.6.RELEASE</spring.web.version>
-		<spring.core.version>4.1.6.RELEASE</spring.core.version>
-		<spring.jdbc.version>4.1.6.RELEASE</spring.jdbc.version>
-		<spring.security.version>3.2.8.RELEASE</spring.security.version>
-		<jackson.version>2.4.2</jackson.version>
-		<jstl.version>1.2</jstl.version>
-		<servlet.api.version>2.5</servlet.api.version>
-		<mysql.connector.version>5.1.35</mysql.connector.version>
-		<jetty-maven-plugin.version>9.2.2.v20140723</jetty-maven-plugin.version>
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<bonecp.version>0.8.0.RELEASE</bonecp.version>
-		<hibernate.validator.version>5.2.0.CR1</hibernate.validator.version>
-		<javax.el-api.version>2.2.4</javax.el-api.version>
-		<javax.el.version>2.2.4</javax.el.version>
-		<log4j.version>1.2.16</log4j.version>
-		<org.slf4j-version>1.6.1</org.slf4j-version>
-		<itext.version>5.0.6</itext.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.mvc.version>4.1.6.RELEASE</spring.mvc.version>
+        <spring.web.version>4.1.6.RELEASE</spring.web.version>
+        <spring.core.version>4.1.6.RELEASE</spring.core.version>
+        <spring.jdbc.version>4.1.6.RELEASE</spring.jdbc.version>
+        <spring.security.version>3.2.8.RELEASE</spring.security.version>
+        <jackson.version>2.4.2</jackson.version>
+        <jstl.version>1.2</jstl.version>
+        <servlet.api.version>2.5</servlet.api.version>
+        <mysql.connector.version>5.1.35</mysql.connector.version>
+        <jetty-maven-plugin.version>9.2.2.v20140723</jetty-maven-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <bonecp.version>0.8.0.RELEASE</bonecp.version>
+        <hibernate.validator.version>5.2.0.CR1</hibernate.validator.version>
+        <javax.el-api.version>2.2.4</javax.el-api.version>
+        <javax.el.version>2.2.4</javax.el.version>
+        <log4j.version>1.2.16</log4j.version>
+        <org.slf4j-version>1.6.1</org.slf4j-version>
+        <itext.version>5.0.6</itext.version>
+    </properties>
 	
-  <dependencies>
+    <dependencies>
   
-  			<!-- start spring -->
-            <dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.mvc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.jdbc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.web.version}</version>
-			</dependency>
-		 <!-- end of spring -->
+        <!-- start spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.mvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.web.version}</version>
+        </dependency>
+        <!-- end of spring -->
   		
-  		<!-- spring security -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-			<!--end spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <!--end spring security -->
 			
 			
-			<!-- Jackson JSON Processor -->
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
+        <!-- Jackson JSON Processor -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 			
-			<!-- servlet api -->
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>${servlet.api.version}</version>
-				 <scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>jstl</artifactId>
-				<version>${jstl.version}</version>
-			</dependency>
+        <!-- servlet api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
 			
-			<!-- mysql -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.connector.version}</version>
-			</dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
 			
-			<!-- Logging -->
-		    <dependency>
-		    	<groupId>org.slf4j</groupId>
-		    	<artifactId>slf4j-api</artifactId>
-		    	<version>${org.slf4j-version}</version>
-		    </dependency>
-		    <dependency>
-		    	<groupId>org.slf4j</groupId>
-		    	<artifactId>jcl-over-slf4j</artifactId>
-		    	<version>${org.slf4j-version}</version>
-		    	<scope>runtime</scope>
-		    </dependency>
-		    <dependency>
-		    	<groupId>org.slf4j</groupId>
-		    	<artifactId>slf4j-log4j12</artifactId>
-		    	<version>${org.slf4j-version}</version>
-		    	<scope>runtime</scope>
-		    </dependency>
-		    <dependency>
-		    	<groupId>log4j</groupId>
-		    	<artifactId>log4j</artifactId>
-		    	<version>${log4j.version}</version>
-		    	<scope>runtime</scope>
-		    </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${org.slf4j-version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${org.slf4j-version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
 			
-			<!-- Hibernate Validator -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hibernate.validator.version}</version>
-			</dependency>
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
 			
-			<dependency>
-				<groupId>javax.el</groupId>
-				<artifactId>javax.el-api</artifactId>
-				<version>${javax.el-api.version}</version>
-			</dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el-api.version}</version>
+        </dependency>
 			
-			<dependency>
-				<groupId>com.itextpdf</groupId>
-				<artifactId>itextpdf</artifactId>
-				<version>${itext.version}</version>
-           </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
 			
  
-           <dependency>
-             <groupId>junit</groupId>
-             <artifactId>junit</artifactId>
-             <version>3.8.1</version>
-             <scope>test</scope>
-           </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
 
-  </dependencies>
+    </dependencies>
   
-  <build>
-    <finalName>polsri-union-apps</finalName>
-    <resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-    <pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.jetty</groupId>
-					<artifactId>jetty-maven-plugin</artifactId>
-					<version>${jetty-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
-					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
-						<compilerArgument></compilerArgument>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-  </build>
+    <build>
+        <finalName>polsri-union-apps</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>${jetty-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                        <compilerArgument></compilerArgument>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
   
 </project>

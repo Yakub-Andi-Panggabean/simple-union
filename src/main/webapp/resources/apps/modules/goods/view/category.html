@@ -1,98 +1,98 @@
 <div ng-controller="MasterCategoryController" ng-init="retrieveAllCategories()" layout="column" class="md-whiteframe-12dp">
-      <md-toolbar class="md-whiteframe-24dp">
-         <div class="md-toolbar-tools">
-           <h2>
-              <span>Master > Category</span>
+    <md-toolbar class="md-whiteframe-24dp">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Master > Category</span>
             </h2>
-          </div>
-      </md-toolbar>
-      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        </div>
+    </md-toolbar>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
         <div layout-padding class="md-whiteframe-1dp">
-      <div layout layout-sm="column">
-        <md-input-container>
-          <label>Category Name</label>
-          <input ng-model="category.name">
-        </md-input-container>
-      </div>
-        <div layout layout-sm="column" flex>
-             <md-button class="md-raised md-primary button-custom" ng-click='addNewCategory()'>Add</md-button>
-           </md-button>
-           <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
-        </div> 
-    </div>
+            <div layout layout-sm="column">
+                <md-input-container>
+                    <label>Category Name</label>
+                    <input ng-model="category.name">
+                </md-input-container>
+            </div>
+            <div layout layout-sm="column" flex>
+                <md-button class="md-raised md-primary button-custom" ng-click='addNewCategory()'>Add</md-button>
+                </md-button>
+                <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+            </div> 
+        </div>
         <div layout="column" class="md-whiteframe-1dp">
-       <div flex>  <h3 class="md-subhead" >Category List</h3></div>
-         <div flex layout-padding class="md-whiteframe-6dp">
-        <table class="table table-hover" style="width:100%;">
-         <thead>
-           <tr>
-            <th>
-               Active Status
-             </th>
-             <th>
-               Category Name
-             </th>
-             <th>
-               Created Date
-             </th>
-             <th>
-               Created By
-             </th>
-             <th>
-               Last Update
-             </th>
-             <th>
-               Updated By
-             </th>
-             <th>
-               Action
-             </th>
-           </tr>
-           </thead>
-           <tbody>
-             <tr ng-repeat="category in categories">
-               <td ng-if="category.active == 0">
-             	   <md-switch ng-model="isFalse" aria-label="Switch 1" ng-change="updateCategory(category,category.active)" style="margin-top:2px;margin-bottom:2px;">
-                   </md-switch>
-                </td>
-                <td ng-if="category.active == 1">
-             	   <md-switch ng-model=isTrue aria-label="Switch 1" ng-change="updateCategory(category,category.active)" style="margin-top:2px;margin-bottom:2px;">
-                   </md-switch>
-                </td>
-             	<td>
-             	  <label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{category.categoryName}}</label>
-             	   <!-- <input ng-model="category.categoryName" ng-show="isEditing" ng-dblclick="isEditing=!isEditing"/> -->
-             	   <md-input-container  ng-show="isEditing" ng-dblclick="isEditing=!isEditing"  ng-show="isEditing">
-                     <label>Category Name</label>
-                     <input ng-model="category.categoryName">
-                   </md-input-container>
-             	</td>
-                <td>
-                 {{category.createdDate}}
-                </td>
-                <td>
-                 {{category.createdBy}}
-                </td>
-                <td>
-                  {{category.updatedDate}}
-                </td>
-                <td>
-                  {{category.updatedBy}}
-                </td>
-             	<td>
-             	<md-button class="md-icon-button" aria-label="Settings" ng-click="deleteCategory(category.categoryId)">
-                   <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-                   </md-button>
-                   <md-button class="md-icon-button" aria-label="Settings" ng-click="updateCategory(category,99)">
-                   <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-                  </md-button>
-             	</td>
-             </tr>
-            </tbody>
-       </table>
-       <br/>
-       </div>
-       <br/>
-       </div>  
-  </md-content>
+            <div flex>  <h3 class="md-subhead" >Category List</h3></div>
+            <div flex layout-padding class="md-whiteframe-6dp">
+                <table class="table table-hover" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Active Status
+                            </th>
+                            <th>
+                                Category Name
+                            </th>
+                            <th>
+                                Created Date
+                            </th>
+                            <th>
+                                Created By
+                            </th>
+                            <th>
+                                Last Update
+                            </th>
+                            <th>
+                                Updated By
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="category in categories">
+                    <td ng-if="category.active == 0">
+                    <md-switch ng-model="isFalse" aria-label="Switch 1" ng-change="updateCategory(category, category.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                    <td ng-if="category.active == 1">
+                    <md-switch ng-model=isTrue aria-label="Switch 1" ng-change="updateCategory(category, category.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                    <td>
+                        <label ng-hide="isEditing" ng-dblclick="isEditing = !isEditing">{{category.categoryName}}</label>
+                        <!-- <input ng-model="category.categoryName" ng-show="isEditing" ng-dblclick="isEditing=!isEditing"/> -->
+                    <md-input-container  ng-show="isEditing" ng-dblclick="isEditing = !isEditing"  ng-show="isEditing">
+                        <label>Category Name</label>
+                        <input ng-model="category.categoryName">
+                    </md-input-container>
+                    </td>
+                    <td>
+                        {{category.createdDate}}
+                    </td>
+                    <td>
+                        {{category.createdBy}}
+                    </td>
+                    <td>
+                        {{category.updatedDate}}
+                    </td>
+                    <td>
+                        {{category.updatedBy}}
+                    </td>
+                    <td>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="deleteCategory(category.categoryId)">
+                        <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="updateCategory(category, 99)">
+                        <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+            </div>
+            <br/>
+        </div>  
+    </md-content>
 </div>

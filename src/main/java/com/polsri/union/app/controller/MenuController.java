@@ -181,7 +181,7 @@ public class MenuController {
 	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu() {
 		MenuDto dto = null;
 		List<MenuDto> activeMenus = new ArrayList<MenuDto>();
-		List<MenuDto> children = new ArrayList<MenuDto>();
+		List<MenuDto> children = null;
 		List<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		ErrorCategory errorCategory = null;
@@ -199,12 +199,14 @@ public class MenuController {
 				for (MenuDto menu : activeMenus) {
 					if (menu.getParent() == null) {
 						List<Menu> listOfChild = service.findChildMenu(menu.getMenuId());
-						for (Menu child : listOfChild) {
+                                                children=new ArrayList<MenuDto>();
+                                                for (Menu child : listOfChild) {
 							children.add(new MenuDto(child.getMenuId(), child.getLabel(), child.getParent(),
 									child.getRelativeUrl(), child.getActive(), child.getCreatedDate(),
 									child.getCreatedBy(), child.getUpdatedDate(), child.getUpdatedBy(), null));
 						}
-						menu.setchildren(children);
+                                                //children no set because it list off all menu
+						//menu.setchildren(children);
 					}
 				}
 			}

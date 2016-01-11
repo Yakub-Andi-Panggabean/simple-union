@@ -23,11 +23,12 @@ public class MenuDao {
 	}
 
 	public void updateMenu(Menu menu) {
+            System.out.println("active :"+menu.getActive());
 		jdbcTemplate
-				.update(menu.generateUpdateByQuery(),
-						new Object[] { menu.getMenuId(), menu.getLabel(), menu.getRelativeUrl(), menu.getParent(),
+				.update(menu.generateUpdateQuery(),
+						new Object[] { menu.getMenuId(), menu.getLabel(),menu.getParent(), menu.getRelativeUrl(), menu.getActive(),
 								menu.getCreatedDate(), menu.getCreatedBy(), menu.getUpdatedDate(),
-								menu.getUpdatedBy() });
+								menu.getUpdatedBy(),menu.getMenuId() });
 	}
 
 	public void deleteMenu(Menu menu) {
@@ -40,7 +41,7 @@ public class MenuDao {
 	}
 
 	public List<Menu> findAllMenus() {
-		return jdbcTemplate.query(new Menu().generateSelectByQuery(false, "active"), new Object[] { 1 },
+		return jdbcTemplate.query(new Menu().generateSelectAllQuery(false), new Object[] {},
 				Menu.obtainRowMapper());
 	}
 

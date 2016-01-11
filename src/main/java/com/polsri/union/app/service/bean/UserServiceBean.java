@@ -11,6 +11,9 @@ import com.polsri.union.app.domain.User;
 import com.polsri.union.app.service.UserService;
 import com.polsri.union.app.util.core.UUIDKeyProcessor;
 import com.polsri.union.app.util.credential.CredentialsInspector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 @Service
 @Transactional(readOnly = true)
@@ -67,5 +70,21 @@ public class UserServiceBean implements UserService {
 		// TODO Auto-generated method stub
 		return dao.countTotalUser();
 	}
+
+    @Override
+    public boolean isValidUser(String principal, String credential) {
+         boolean valid=false; 
+         System.out.println(principal+":"+credential);
+         try {
+             User user=dao.findUser(new User(null, principal, null, 0, null, null, null, null));
+             valid=CredentialsInspector.isPasswordMacthes(credential, user.getPassword());
+         } catch (Exception ex) {
+             ex.printStackTrace();
+             if(ex instanceof EmptyResultDataAccessException){
+         
+             }
+         }
+         return valid;
+    }
 
 }

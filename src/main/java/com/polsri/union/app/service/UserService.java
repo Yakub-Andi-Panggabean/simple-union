@@ -17,5 +17,7 @@ public interface UserService {
 	List<User> findAllUser(int start, int limit);
 
 	Long countTotalUser();
+        
+        boolean isValidUser(String principal,String credential);
 
 }

@@ -36,7 +36,7 @@
     </md-toolbar>
      <div layout="row" flex>
         <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" >
-          <div id="menu_container" ng-cloack ng-controller='MenuController'>
+          <div id="menu_container" ng-cloack ng-controller='MenuController' ng-init="retrieveAvailableMenu()">
                    <abn-tree 
                        tree-data         = "my_data"
                        tree-control      = "my_tree"

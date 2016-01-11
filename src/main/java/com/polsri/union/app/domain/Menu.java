@@ -162,8 +162,8 @@ public class Menu extends QueryDomainGeneratorBean implements Serializable {
 				// TODO Auto-generated method stub
 				return new Menu(rs.getString("menu_id"), rs.getString("label"), rs.getString("parent_id"),
 						rs.getString("relative_url"), rs.getInt("active"),
-						new Date(rs.getDate("created_date").getTime()), rs.getString("created_by"),
-						Utility.convertToUtilDate(rs.getDate("updated_date")), rs.getString("updated_by"));
+						rs.getDate("created_date"), rs.getString("created_by"),
+						rs.getDate("updated_date"), rs.getString("updated_by"));
 			}
 		};
 	}

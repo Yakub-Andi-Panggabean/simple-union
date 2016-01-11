@@ -14,7 +14,7 @@ import com.polsri.union.app.domain.RoleMenu;
 public class RoleMenuDao {
 
 	private static final String FIND_ROLE_BY_MENU = "SELECT a.* FROM role a,role_menu b WHERE a.role_id=b.role_id AND b.menu_id=? ";
-	private static final String FIND_MENU_BY_ROLE = "SELECT a.* FROM menu a,role_menu b WHERE a.menu_id=b.menu_id AND b.role_id=?";
+	private static final String FIND_MENU_BY_ROLE = "SELECT a.* FROM menu a,role_menu b WHERE a.menu_id=b.menu_id AND a.active=1 AND b.role_id=?";
 	private static final String DELETE_BY_MENU_OR_ROLE = "DELETE FROM role_menu  WHERE menu_id = ? OR role_id = ? ";
 
 	@Autowired

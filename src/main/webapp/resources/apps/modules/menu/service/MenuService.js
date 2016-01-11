@@ -5,6 +5,7 @@
 
 var BASE_PATH="/api";
 var BASE_PATH_UPDATE=BASE_PATH+"/menu";
+var BASE_PATH_ROLE_MENU=BASE_PATH+"/rolemenu/menu";
 
 var module,dependencies;
 
@@ -16,8 +17,12 @@ module=angular.module('UnionApp.menu.service',dependencies);
 module.factory('MenuService',function($http){
 	var factories={};
 	factories.getAvailableMenus=function(){
-		return $http.get('/api/rolemenu/menu/6dc5acb6c869423fbdd014b979c04cef');
-	}
+		return $http.get(BASE_PATH_ROLE_MENU);
+	} 
+        
+        factories.getAllMenu=function(){
+            return $http.get(BASE_PATH_UPDATE);
+        }
 	
 	factories.addNewMenu=function(menu){
 		return $http.post(BASE_PATH_UPDATE,menu);

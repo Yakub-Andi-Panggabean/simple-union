@@ -1,7 +1,9 @@
 package com.polsri.union.app.service.component.security;
 
+import com.polsri.union.app.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,6 +15,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class RestAuthenticationProvider implements AuthenticationProvider {
 
+        @Autowired
+        private UserService service;
+    
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		// TODO Auto-generated method stub
@@ -24,11 +29,10 @@ public class RestAuthenticationProvider implements AuthenticationProvider {
 		System.out.println("principal --- > " + principal);
 		System.out.println("credentials --- > " + credentials);
 
-		boolean isAuthenticated = credentials.equals("password") && principal.equals("admin");
-
+		//boolean isAuthenticated = credentials.equals("password") && principal.equals("admin");
+                boolean isAuthenticated=service.isValidUser(principal, credentials);
 		System.out.println("authenticated --- >" + isAuthenticated);
 
-		
 		if (!isAuthenticated) {
 			throw new BadCredentialsException("get out of here");
 		}
@@ -38,7 +42,7 @@ public class RestAuthenticationProvider implements AuthenticationProvider {
 
 	private Authentication getAuthenticatedUser(String credentials, String principal) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		authorities.add(new SimpleGrantedAuthority("HERO"));
 		return new UsernamePasswordAuthenticationToken(principal, credentials, authorities);
 	}
 

@@ -18,21 +18,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.polsri.union.app.domain.Menu;
 import com.polsri.union.app.domain.Role;
 import com.polsri.union.app.domain.RoleMenu;
+import com.polsri.union.app.domain.User;
 import com.polsri.union.app.dto.MenuDto;
 import com.polsri.union.app.dto.RoleDto;
 import com.polsri.union.app.service.MenuService;
 import com.polsri.union.app.service.RoleMenuService;
+import com.polsri.union.app.service.UserRoleService;
+import com.polsri.union.app.service.UserService;
+import com.polsri.union.app.util.constant.Util;
+import com.polsri.union.app.util.credential.CredentialsInspector;
 import com.polsri.union.app.util.response.ErrorCategory;
 import com.polsri.union.app.util.response.GenericMultipleResponse;
 import com.polsri.union.app.util.response.GenericResponse;
 import com.polsri.union.app.util.response.GenericSingleResponse;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = RoleMenuController.BASE_PATH)
 public class RoleMenuController {
 	public static final String BASE_PATH = "/api/rolemenu";
 	private static final String PARAMETERIZED_PATH = "/{id}";
-	private static final String MENU_PARAMETERIZED_PATH = "/menu/{id}";
+	private static final String MENU_PARAMETERIZED_PATH = "/menu";
 	private static final String ROLE_PARAMETERIZED_PATH = "/role/{id}";
 
 	@Autowired
@@ -40,6 +46,12 @@ public class RoleMenuController {
 
 	@Autowired
 	private MenuService menuService;
+        
+        @Autowired
+	private UserService userService;
+        
+        @Autowired
+        private UserRoleService UserRoleService;
 
 	@RequestMapping(value = PARAMETERIZED_PATH, consumes = {
 			MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.DELETE, produces = {
@@ -123,7 +135,7 @@ public class RoleMenuController {
 	@RequestMapping(value = MENU_PARAMETERIZED_PATH, method = RequestMethod.GET, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
-	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu(@PathVariable("id") String roleId) {
+	public ResponseEntity<GenericMultipleResponse<MenuDto>> findAvalilableMenu(HttpServletRequest request) {
 		MenuDto dto = null;
 		List<MenuDto> activeMenus = new ArrayList<MenuDto>();
 		List<MenuDto> children = null;
@@ -131,7 +143,21 @@ public class RoleMenuController {
 		boolean success = true;
 		ErrorCategory errorCategory = null;
 		HttpStatus httpStatus = null;
+                String roleId=null;
 		try {
+                        //get servlet request
+                         String req=request.getHeader(Util.REQUEST_HEADER);
+                         if(request == null){
+                             return null;
+                         }
+                         
+                         String[] authenticationData=CredentialsInspector.decodeBasicAuthToken(req).split(":");
+                         if(authenticationData.length>0&&authenticationData.length>1){
+                             //find role by user id
+                             String userId=userService.findByUserName(authenticationData[0]).getUserId();
+                             roleId=UserRoleService.findRoleByUser(userId).getRoleId();
+                         }
+                    
 			// find list of all active menus
 			for (Menu menu : service.findMenuByRole(roleId)) {
 				dto = new MenuDto();

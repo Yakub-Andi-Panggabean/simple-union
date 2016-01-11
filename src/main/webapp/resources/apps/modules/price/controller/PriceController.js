@@ -53,7 +53,8 @@ module.controller('PriceController',function($scope,$cookies,$cookieStore,$mdDia
 		      targetEvent: ev,
 		    });
 		  };
-		  
+     
+     
   /**
    * dialog row double click
    */

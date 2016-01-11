@@ -1,5 +1,6 @@
 package com.polsri.union.app.service.component.security;
 
+import com.polsri.union.app.util.constant.Util;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
@@ -42,7 +43,7 @@ public class RestAuthenticationFilter extends GenericFilterBean {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
-		String authorization = req.getHeader("Authorization");
+		String authorization = req.getHeader(Util.REQUEST_HEADER);
 
 		try {
 			System.out.println("uri --> " + req.getRequestURI());
@@ -59,7 +60,7 @@ public class RestAuthenticationFilter extends GenericFilterBean {
 				Authentication authentication = new UsernamePasswordAuthenticationToken(credentials[0], credentials[1]);
 				// Request the authentication manager to authenticate the token
 				Authentication successfulAuthentication = authenticationManager.authenticate(authentication);
-				// Pass the successful token to the SecurityHolder where it can
+                                // Pass the successful token to the SecurityHolder where it can
 				// be
 				// retrieved by this thread at any stage.
 				SecurityContextHolder.getContext().setAuthentication(successfulAuthentication);

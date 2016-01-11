@@ -1,86 +1,82 @@
-<div layout="column" ng-cloak>
- <md-content   class="simplebar">
-<md-toolbar>
-         <div class="md-toolbar-tools">
-           <h2>
-              <span>Setting > Menu</span>
+<md-content  ng-controller="MenuController" ng-init="retrieveAllMenu()" class="simplebar">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Setting > Menu</span>
             </h2>
-          </div>
-      </md-toolbar>
-  <br/>
- <div layout-padding >
-    <div layout="column" class="md-whiteframe-1dp">
-           	<div layout="row">
-  			   <div flex="90">
-  				  <h2 class="md-subhead" >Menu List</h2>
-  			   </div>
-  			   <div>
-  				 <md-button class="md-raised md-primary button-custom" >Add Menu</md-button>
-  			   </div>
-	       </div>
-	       <br/>
-           <div flex layout-padding class="md-whiteframe-6dp">
-       	    <table class="table table-hover" style="width:100%;">
-              <thead>
-                <tr>
-                 <th>
-                  Label
-                 </th>
-                 <th>
-                   Url
-                 </th>
-                 <th>
-                  Parent
-                 </th>
-                 <th>
-                   Active
-                 </th>
-                 <th>
-                   Created Date
-                 </th>
-                 <th>
-                   Created By
-                 </th> 
-                 <th>
-                   Updated Date
-                 </th>
-                 <th>
-                   Updated By
-                 </th>
-              </tr>
-           </thead>
-           <tbody>
-             <tr>
-             	 <td>
-                  Label
-                 </td>
-                 <td>
-                   Url
-                 </td>
-                 <td>
-                  Parent
-                 </td>
-                 <td>
-                   Active
-                 </td>
-                 <td>
-                   Created Date
-                 </td>
-                 <td>
-                   Created By
-                 </td> 
-                 <td>
-                   Updated Date
-                 </td>
-                 <td>
-                   Updated By
-                 </td>
-             </tr>
-            </tbody>
-       </table>
-       		</div>
-       </div>  
-  </div>
-  <br/>  
+        </div>
+    </md-toolbar>
+    <br/>
+    <div layout-padding >
+        <div layout="column" class="md-whiteframe-1dp">
+            <div layout="row">
+                <div flex="90">
+                    <h2 class="md-subhead" >Menu List</h2>
+                </div>
+                <div>
+                    <md-button class="md-raised md-primary button-custom"  ng-click="showAdd($event)">Add Menu</md-button>
+                </div>
+            </div>
+            <br/>
+            <div >
+                <md-content flex layout-padding class="md-whiteframe-6dp">
+                    <table class="table table-hover" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Active
+                                </th>
+                                <th>
+                                    Label
+                                </th>
+                                <th>
+                                    Url
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th width="100">
+                                    Created Date
+                                </th>
+                                <th width="100">
+                                    Created By
+                                </th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="menu in menulist">
+                                 <td ng-if="menu.active == 0">
+                    <md-switch ng-model="isFalse" aria-label="Switch 1" ng-change="updateMenu(menu, menu.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                    <td ng-if="menu.active == 1">
+                    <md-switch ng-model=isTrue aria-label="Switch 1" ng-change="updateMenu(menu, menu.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                                <td>
+                                    {{menu.label}}
+                                </td>
+                                <td>
+                                    {{menu.relativeUrl}}
+                                </td>
+                                <td  ng-if="menu.parent == null">
+                                    parent
+                                </td>
+                                <td  ng-if="menu.parent != null">
+                                    children
+                                </td>
+                                <td>
+                                    {{menu.createdDate}}
+                                </td>
+                                <td>
+                                    {{menu.createdBy}}
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </div>
+        </div>  
+    </div>
+    <br/>  
 </md-content>
-</div>
