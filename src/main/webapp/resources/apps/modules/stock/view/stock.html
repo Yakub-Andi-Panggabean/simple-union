@@ -1,108 +1,108 @@
 <div ng-controller="StockRootController" ng-init="retriveAllStocks()" layout="column" class="md-whiteframe-12dp">
-      <md-toolbar  class="md-whiteframe-24dp">
-         <div class="md-toolbar-tools">
-           <h2>
-              <span>Inventory > Stock</span>
+    <md-toolbar  class="md-whiteframe-24dp">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Inventory > Stock</span>
             </h2>
-          </div>
-      </md-toolbar>
-      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
-      <input type="hidden" id="stock-goods-id"/>
-      <div layout layout-sm="column">
-      <md-input-container style="padding-left:0px;padding-top:0px;">
-           <md-button class="md-icon-button" aria-label="Settings" ng-click="showDialog($event)">
-             <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-         </md-button>
-        </md-input-container>
-        <md-input-container>
-          <label>Goods Code</label>
-          <input id="stock-goods-code" ng-model="stock.goodsCode" placeholder="goods-code" disabled>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Goods Name</label>
-          <input id="stock-goods-name" ng-model="stock.goodsName" placeholder="goods-name" disabled>
-        </md-input-container>
-      </div>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <input type="hidden" id="stock-goods-id"/>
         <div layout layout-sm="column">
-         <md-input-container class="md-block">
-           <label>Quantity</label>
-           <input ng-model="stock.quantity">
-        </md-input-container>
-         <md-input-container class="md-block">
-          <label>Max Quantity</label>
-           <input id="stock-max-quantity" ng-model="stock.maxQuantity"  value=" ">
-        </md-input-container>
+            <md-input-container style="padding-left:0px;padding-top:0px;">
+                <md-button class="md-icon-button" aria-label="Settings" ng-click="showDialog($event)">
+                    <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                </md-button>
+            </md-input-container>
+            <md-input-container>
+                <label>Goods Code</label>
+                <input id="stock-goods-code" ng-model="stock.goodsCode" placeholder="goods-code" disabled>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Goods Name</label>
+                <input id="stock-goods-name" ng-model="stock.goodsName" placeholder="goods-name" disabled>
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
             <md-input-container class="md-block">
-           <label>Location</label>
-           <input id="stock-location" ng-model="stock.location">
-        </md-input-container>
-         <md-input-container class="md-block">
-          <label>Sub Location</label>
-           <input id="stock-sub-location" ng-model="stock.subLocation">
-        </md-input-container>
+                <label>Quantity</label>
+                <input ng-model="stock.quantity">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Max Quantity</label>
+                <input id="stock-max-quantity" ng-model="stock.maxQuantity"  value=" ">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Location</label>
+                <input id="stock-location" ng-model="stock.location">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Sub Location</label>
+                <input id="stock-sub-location" ng-model="stock.subLocation">
+            </md-input-container>
         </div>
         <div layout layout-sm="column" flex>
             <md-button class="md-raised md-primary button-custom" ng-click="processingStock(stock)">Set</md-button>
         </div>
-          </md-content>
-        <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+    </md-content>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
         <div layout="column" class="md-whiteframe-1dp">
-          <div flex>  <h3 class="md-subhead" >Stock Data</h3></div>
-             <div  flex layout-padding class="md-whiteframe-6dp">  
-               <table class="table table-hover" style="width:100%;">
-                 <thead>
-                   <tr>
-                     <th>
-                        Goods Name
-                      </th>
-                      <th>
-                        Quantity
-                      </th>
-                      <th>
-                        Max Quantity
-                      </th>
-                       <th>
-                        Location
-                      </th>
-                      <th>
-                        Sub Location
-                      </th>
-                      <th>
-                        Last Update
-                      </th>
-                      <th>
-                        Updated By
-                      </th>
-                   </tr>
-              </thead>
-            <tbody>
-            <tr ng-repeat="stock in stocks">
-               <td>
-             	  {{stock.goodsName}}
-                </td>
-                <td>
-                 {{stock.quantity}}
-                </td>
-                <td>
-                 {{stock.maxQuantity}}
-                </td>
-                  <td>
-                 {{stock.location}}
-                </td>
-                <td>
-                 {{stock.subLocation}}
-                </td>
-                  <td>
-                 {{stock.updatedDate}}
-                </td>
-                <td>
-                   {{stock.updatedBy}}
-                </td>
-             </tr>
-            </tbody>
-       </table>
-       </div >
-       </div>
-           </md-content>
-       </div>
+            <div flex>  <h3 class="md-subhead" >Stock Data</h3></div>
+            <div  flex layout-padding class="md-whiteframe-6dp">  
+                <table class="table table-hover" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Goods Name
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Max Quantity
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                Sub Location
+                            </th>
+                            <th>
+                                Last Update
+                            </th>
+                            <th>
+                                Updated By
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="stock in stocks">
+                            <td>
+                                {{stock.goodsName}}
+                            </td>
+                            <td>
+                                {{stock.quantity}}
+                            </td>
+                            <td>
+                                {{stock.maxQuantity}}
+                            </td>
+                            <td>
+                                {{stock.location}}
+                            </td>
+                            <td>
+                                {{stock.subLocation}}
+                            </td>
+                            <td>
+                                {{stock.updatedDate}}
+                            </td>
+                            <td>
+                                {{stock.updatedBy}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div >
+        </div>
+    </md-content>
+</div>
 </div>

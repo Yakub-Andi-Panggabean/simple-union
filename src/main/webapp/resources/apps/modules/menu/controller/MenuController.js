@@ -18,24 +18,36 @@ module.run(function($http, $cookieStore) {
 
 
 module.controller('MenuController', function($scope, $location, $mdDialog, $cookieStore, $mdToast, MenuService) {
-    var treedata_avm;
-    
+    var treedata_avm,tree;
+    $scope.my_data=[];
+    $scope.my_tree={};
     $scope.choosePage = function(branch) {
         $location.path(branch.relativeUrl);
     };
 
     //mock data
     treedata_avm = [];
+    $scope.username=$cookieStore.get('principal');
 
     //replacing harcoded menu with menu from database
     $scope.retrieveAvailableMenu = function() {
         MenuService.getAvailableMenus().then(function(response) {
-            console.log(response.data.contents);
+            //console.log(response.data.contents);
             $scope.my_data = response.data.contents;
         });
-    }
-    $scope.my_data = treedata_avm;
-
+    };
+    
+     $scope.try_async_load = function() {
+        $scope.my_data = [];
+        $scope.doing_async = true;
+        MenuService.getAvailableMenus().then(function(response) {
+           console.log('xxx');
+           //console.log(response.data.contents);
+           //$scope.tree = response.data.contents;
+           //$scope.tree.expand_all();
+           //console.log($scope.tree);
+        });
+    };
 
 
     $scope.isFalse = false;
@@ -68,11 +80,11 @@ module.controller('MenuController', function($scope, $location, $mdDialog, $cook
                 .position(position)
                 .hideDelay(3000)
                 );
-    }
+    };
 
     $scope.closeDialog = function() {
         $mdDialog.hide();
-    }
+    };
 
     $scope.retrieveAllMenu = function() {
         MenuService.getAllMenu()
@@ -83,7 +95,7 @@ module.controller('MenuController', function($scope, $location, $mdDialog, $cook
         }).finally(function() {
 
         });
-    }
+    };
 
     $scope.addNewMenu = function() {
         var menuData = {
@@ -111,7 +123,7 @@ module.controller('MenuController', function($scope, $location, $mdDialog, $cook
                 alert(response.data.errorMessages);
             }
         });
-    }
+    };
 
     $scope.switchChange = function(active) {
         if (active === 0) {
@@ -120,7 +132,15 @@ module.controller('MenuController', function($scope, $location, $mdDialog, $cook
             active = 0;
         }
         return active;
-    }
+    };
+
+    $scope.expand_tree=function(){
+        $scope.my_tree.expand_all();
+    };
+    
+    $scope.collapse_tree=function(){
+        $scope.my_tree.collapse_all();
+    };
 
     /**
      * updated new category
@@ -156,13 +176,18 @@ module.controller('MenuController', function($scope, $location, $mdDialog, $cook
                 }).error(function(data, status) {
             console.error('error', status, data);
         }).finally(function() {
+            $scope.try_async_load();
             console.log("finish updating category");
             $scope.loading = false;
-            $scope.retrieveAllMenu();
             location.reload();
         });
-    }
-
+    };
+    
+     var originatorEv;
+     $scope.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
 });
 
 

@@ -1,103 +1,103 @@
 <div ng-controller="OrderController" layout="column" ng-init="generateKey()" class="md-whiteframe-12dp">
-      <md-toolbar  class="md-whiteframe-24dp">
-         <div class="md-toolbar-tools" >
-           <h2 class="md-headline" >Sales > Order</h2>
-          </div>
-      </md-toolbar>
-      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
-      <div layout-padding class="md-whiteframe-1dp">
-         <input type="hidden" id="order-goods-id"/>
-         <input type="hidden" id="order-goods-price"/>
-         <div layout="column" layout-align="end end">
-         	<md-input-container>
-               <label>Order Number</label>
-               <input ng-model="order.transactionNumber" disabled>
-             </md-input-container>
-         </div>
-         <div layout="column">
-           <div  layout="row">
-             <md-input-container style="padding-left:0px;">
-               <md-button class="md-icon-button" ng-click="showDialog($event)">
-                  <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);" ></md-icon>
-               </md-button>
-             </md-input-container>
-             <md-input-container flex>
-               <label>Goods Code</label>
-               <input id="order-goods-code" ng-model="order.goodsCode" disabled>
-            </md-input-container>
-            <md-input-container flex>
-              <label>Goods Name</label>
-              <input id="order-goods-name" ng-model="order.goodsName" disabled>
-            </md-input-container>
-            <md-input-container >
-              <label>Order Qty</label>
-              <input ng-model="order.quantity">
-            </md-input-container>
-          </div>
-           <md-button class="md-raised md-primary button-custom" ng-click="pushDetail(order)" >Add</md-button>
-         </div>
-      </div>
-       <div layout="column" class="md-whiteframe-1dp relative">
-           <div flex>  <h3 class="md-subhead" >Order Detail</h3></div>
-           <div flex layout-padding class="md-whiteframe-6dp">
-            <table class="table table-hover" style="width:100%;">
-         <thead>
-           <tr>
-            <th>
-               Goods Code
-             </th>
-             <th>
-               Goods Name
-             </th>
-             <th>
-               Price
-             </th>
-             <th>
-               Quantity
-             </th>
-             <th>
-               Total
-             </th>
-             <th>
-              Cancel
-             </th>
-           </tr>
-           </thead>
-           <tbody>
-             <tr ng-repeat="detail in orderDetails">
-               <td>
-             	 {{detail.goodsCode}}
-                </td>
-                <td>
-                 {{detail.goodsName}}
-                </td>
-                <td>
-                 {{detail.price|currency:currencySymbol}}
-                </td>
-                <td>
-                 {{detail.quantity}}
-                </td>
-                <td>
-                  {{detail.totalPrice |currency:currencySymbol}}
-                </td>
-                <td>
-                   <md-button class="md-icon-button" aria-label="Settings" ng-click="popOrderDetail(detail.goodsId)">
-                       <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-                   </md-button>
-                </td>
-             </tr>
-            </tbody>
-       </table>
-           </div>
-           <br/>
-         <div layout="row">
-  			<div flex="80">
-  				<h2 class="md-subhead" >Grand Total : {{grandTotal|currency:currencySymbol}}</h2>
-  			</div>
-  			<div>
-  				<md-button class="md-raised md-primary button-custom" ng-click="saveOrder()">Save</md-button>
-  			</div>
-	    </div>
-      </div>
-       </md-content>          
-       </div>
+    <md-toolbar  class="md-whiteframe-24dp">
+        <div class="md-toolbar-tools" >
+            <h2 class="md-headline" >Sales > Order</h2>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <div layout-padding class="md-whiteframe-1dp">
+            <input type="hidden" id="order-goods-id"/>
+            <input type="hidden" id="order-goods-price"/>
+            <div layout="column" layout-align="end end">
+                <md-input-container>
+                    <label>Order Number</label>
+                    <input ng-model="order.transactionNumber" disabled>
+                </md-input-container>
+            </div>
+            <div layout="column">
+                <div  layout="row">
+                    <md-input-container style="padding-left:0px;">
+                        <md-button class="md-icon-button" ng-click="showDialog($event)">
+                            <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);" ></md-icon>
+                        </md-button>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Goods Code</label>
+                        <input id="order-goods-code" ng-model="order.goodsCode" disabled>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Goods Name</label>
+                        <input id="order-goods-name" ng-model="order.goodsName" disabled>
+                    </md-input-container>
+                    <md-input-container >
+                        <label>Order Qty</label>
+                        <input ng-model="order.quantity">
+                    </md-input-container>
+                </div>
+                <md-button class="md-raised md-primary button-custom" ng-click="pushDetail(order)" >Add</md-button>
+            </div>
+        </div>
+        <div layout="column" class="md-whiteframe-1dp relative">
+            <div flex>  <h3 class="md-subhead" >Order Detail</h3></div>
+            <div flex layout-padding class="md-whiteframe-6dp">
+                <table class="table table-hover" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Goods Code
+                            </th>
+                            <th>
+                                Goods Name
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Cancel
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="detail in orderDetails">
+                            <td>
+                                {{detail.goodsCode}}
+                            </td>
+                            <td>
+                                {{detail.goodsName}}
+                            </td>
+                            <td>
+                                {{detail.price|currency:currencySymbol}}
+                            </td>
+                            <td>
+                                {{detail.quantity}}
+                            </td>
+                            <td>
+                                {{detail.totalPrice |currency:currencySymbol}}
+                            </td>
+                            <td>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="popOrderDetail(detail.goodsId)">
+                        <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div layout="row">
+                <div flex="80">
+                    <h2 class="md-subhead" >Grand Total : {{grandTotal|currency:currencySymbol}}</h2>
+                </div>
+                <div>
+                    <md-button class="md-raised md-primary button-custom" ng-click="saveOrder()">Save</md-button>
+                </div>
+            </div>
+        </div>
+    </md-content>          
+</div>

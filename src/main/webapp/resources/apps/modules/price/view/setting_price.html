@@ -1,76 +1,76 @@
 <div ng-controller="PriceController" ng-init="retriveAllPrices()" layout="column" class="md-whiteframe-12dp">
-      <md-toolbar class="md-whiteframe-24dp">
-         <div class="md-toolbar-tools">
-           <h2>
-              <span>Price > Setting Price</span>
+    <md-toolbar class="md-whiteframe-24dp">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Price > Setting Price</span>
             </h2>
-          </div>
-      </md-toolbar>
-      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        </div>
+    </md-toolbar>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
         <div layout-padding class="md-whiteframe-1dp">
-       <input type="hidden" id="price-goods-id"/>
-      <div layout layout-sm="column">
-        <div layout="row" style="padding-top:15px;">
-             <md-button class="md-icon-button" aria-label="Settings" ng-click="showDialog($event)">
-             <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-         </md-button>
-        </div>
-        <md-input-container>
-          <label>Goods Code</label>
-          <input id="price-goods-code" ng-model="price.goodsCode" disabled>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Goods Name</label>
-          <input id="price-goods-name" ng-model="price.goodsName" disabled>
-        </md-input-container>
-        <md-input-container class="md-block">
-           <label>Price</label>
-           <input ng-model="price.price">
-        </md-input-container>
-      </div>
-        <div layout layout-sm="column" flex>
-             <md-button class="md-raised md-primary button-custom" ng-click="processingPrice(price)">Set Price</md-button>
-           </md-button>
-        </div>
+            <input type="hidden" id="price-goods-id"/>
+            <div layout layout-sm="column">
+                <div layout="row" style="padding-top:15px;">
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="showDialog($event)">
+                        <md-icon class="fa fa-search" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                </div>
+                <md-input-container>
+                    <label>Goods Code</label>
+                    <input id="price-goods-code" ng-model="price.goodsCode" disabled>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Goods Name</label>
+                    <input id="price-goods-name" ng-model="price.goodsName" disabled>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Price</label>
+                    <input ng-model="price.price">
+                </md-input-container>
+            </div>
+            <div layout layout-sm="column" flex>
+                <md-button class="md-raised md-primary button-custom" ng-click="processingPrice(price)">Set Price</md-button>
+                </md-button>
+            </div>
         </div>
         <div layout="column" class="md-whiteframe-1dp">
-       <div flex>  <h3 class="md-subhead" >Price List</h3></div>
-         <div flex layout-padding class="md-whiteframe-6dp">
-       <table class="table table-hover" style="width:100%;">
-         <thead>
-           <tr>
-             <th>Goods Name</th>
-             <th>Price</th>
-             <th>Created Date</th>
-             <th>Created By</th>
-             <th>Last Update</th>
-             <th>Update By</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr ng-repeat="price in prices">
-             <td>
-               {{price.goodsName}}
-             </td>
-             <td>
-               {{price.price}}
-             </td>
-             <td>
-              {{price.createdDate}}
-             </td>
-             <td>
-              {{price.createdBy}}
-             </td>
-             <td>
-              {{price.updatedDate}}
-             </td>
-             <td>
-              {{price.updatedBy}}
-             </td>
-           </tr>
-         </tbody>
-       </table>
-       </div>
-      </div>
-  </md-content>
+            <div flex>  <h3 class="md-subhead" >Price List</h3></div>
+            <div flex layout-padding class="md-whiteframe-6dp">
+                <table class="table table-hover" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>Goods Name</th>
+                            <th>Price</th>
+                            <th>Created Date</th>
+                            <th>Created By</th>
+                            <th>Last Update</th>
+                            <th>Update By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="price in prices">
+                            <td>
+                                {{price.goodsName}}
+                            </td>
+                            <td>
+                                {{price.price}}
+                            </td>
+                            <td>
+                                {{price.createdDate}}
+                            </td>
+                            <td>
+                                {{price.createdBy}}
+                            </td>
+                            <td>
+                                {{price.updatedDate}}
+                            </td>
+                            <td>
+                                {{price.updatedBy}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </md-content>
 </div>

@@ -1,91 +1,91 @@
 <div ng-controller="MasterSupplierController" ng-init="retrieveAllSuppliers()" layout="column" class="md-whiteframe-12dp">
-      <md-toolbar class="md-whiteframe-24dp">
-         <div class="md-toolbar-tools">
-           <h2>
-              <span>Master > Supplier</span>
+    <md-toolbar class="md-whiteframe-24dp">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Master > Supplier</span>
             </h2>
-          </div>
-      </md-toolbar>
-      <md-content layout-padding layout-margin class="md-whiteframe-12dp">
-      <div layout-padding class="md-whiteframe-1dp">
-      <div layout layout-sm="column">
-      <md-input-container>
-        </md-input-container>
-        <md-input-container>
-          <label>Supplier Name</label>
-          <input ng-model="supplier.supplierName">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Pic</label>
-          <input ng-model="supplier.pic">
-        </md-input-container>
-      </div>
-        <div layout layout-sm="column">
-          <md-input-container flex>
-          <label>Address</label>
-          <textarea  ng-model="supplier.address" columns="1" md-maxlength="150" rows="3"></textarea>
-        </md-input-container>
         </div>
-        <div layout layout-sm="column" flex>
-             <md-button class="md-raised md-primary button-custom" ng-click='addNewSupplier(supplier)'>Set </md-button>
-           </md-button>
-          <md-progress-circular id="#cover" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
-        </div>
-        </div>
-       <div layout="column" class="md-whiteframe-1dp">
-         <div flex>  <h3 class="md-subhead" >Supplier List</h3></div>
-         <div flex layout-padding class="md-whiteframe-6dp">
-          <table class="table table-hover" style="width:100%;">
-          <thead>
-          	   <th>Active Status</th>
-               <th>Supplier Name</th>
-               <th>Pic</th>
-               <th>Address</th>
-               <th>Action</th>
-          </thead>
-          <tbody>
-          	<tr ng-repeat="supplier in suppliers">
-          	   <td ng-if="supplier.active == 0">
-             	   <md-switch ng-model="isFalse" aria-label="Switch 1"  ng-change="updateSupplier(supplier,supplier.active)" style="margin-top:2px;margin-bottom:2px;">
-                   </md-switch>
-                </td>
-                <td ng-if="supplier.active == 1">
-             	   <md-switch ng-model=isTrue aria-label="Switch 1"   ng-change="updateSupplier(supplier,supplier.active)" style="margin-top:2px;margin-bottom:2px;">
-                   </md-switch>
-                </td>
-            <td>
-            	<label  ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{supplier.supplierName}}</label>
-            	 <md-input-container  ng-show="isEditing" ng-dblclick="isEditing=!isEditing"  ng-show="isEditing">
-                     <label>Supplier Name</label>
-                     <input ng-model="supplier.supplierName">
-                   </md-input-container>
-            </td>
-            <td>
-            	<label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{supplier.pic}}</label>
-            	<md-input-container  ng-show="isEditing" ng-dblclick="isEditing=!isEditing"  ng-show="isEditing">
-                     <label>Pic</label>
-                     <input ng-model="supplier.pic">
+    </md-toolbar>
+    <md-content layout-padding layout-margin class="md-whiteframe-12dp">
+        <div layout-padding class="md-whiteframe-1dp">
+            <div layout layout-sm="column">
+                <md-input-container>
                 </md-input-container>
-            </td>
-            <td>
-            	<label ng-hide="isEditing" ng-dblclick="isEditing=!isEditing">{{supplier.address}}</label>
-            		<md-input-container  ng-show="isEditing" ng-dblclick="isEditing=!isEditing"  ng-show="isEditing">
-                     <label>Address</label>
-                     <input ng-model="supplier.address">
+                <md-input-container>
+                    <label>Supplier Name</label>
+                    <input ng-model="supplier.supplierName">
                 </md-input-container>
-            </td>
-            <td>
-               <md-button class="md-icon-button" aria-label="Settings" ng-click="deleteSupplier(supplier.supplierId)">
-                  <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-               </md-button>
-               <md-button class="md-icon-button" aria-label="Settings" ng-click="updateSupplier(supplier,99)">
-                  <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
-               </md-button>
-            </td>
-            </tr>
-          </tbody>
-       </table>
-          </div>  
-          </div>  
-  </md-content>
+                <md-input-container flex>
+                    <label>Pic</label>
+                    <input ng-model="supplier.pic">
+                </md-input-container>
+            </div>
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Address</label>
+                    <textarea  ng-model="supplier.address" columns="1" md-maxlength="150" rows="3"></textarea>
+                </md-input-container>
+            </div>
+            <div layout layout-sm="column" flex>
+                <md-button class="md-raised md-primary button-custom" ng-click='addNewSupplier(supplier)'>Set </md-button>
+                </md-button>
+                <md-progress-circular id="#cover" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+            </div>
+        </div>
+        <div layout="column" class="md-whiteframe-1dp">
+            <div flex>  <h3 class="md-subhead" >Supplier List</h3></div>
+            <div flex layout-padding class="md-whiteframe-6dp">
+                <table class="table table-hover" style="width:100%;">
+                    <thead>
+                    <th>Active Status</th>
+                    <th>Supplier Name</th>
+                    <th>Pic</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="supplier in suppliers">
+                            <td ng-if="supplier.active == 0">
+                    <md-switch ng-model="isFalse" aria-label="Switch 1"  ng-change="updateSupplier(supplier, supplier.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                    <td ng-if="supplier.active == 1">
+                    <md-switch ng-model=isTrue aria-label="Switch 1"   ng-change="updateSupplier(supplier, supplier.active)" style="margin-top:2px;margin-bottom:2px;">
+                    </md-switch>
+                    </td>
+                    <td>
+                        <label  ng-hide="isEditing" ng-dblclick="isEditing = !isEditing">{{supplier.supplierName}}</label>
+                    <md-input-container  ng-show="isEditing" ng-dblclick="isEditing = !isEditing"  ng-show="isEditing">
+                        <label>Supplier Name</label>
+                        <input ng-model="supplier.supplierName">
+                    </md-input-container>
+                    </td>
+                    <td>
+                        <label ng-hide="isEditing" ng-dblclick="isEditing = !isEditing">{{supplier.pic}}</label>
+                    <md-input-container  ng-show="isEditing" ng-dblclick="isEditing = !isEditing"  ng-show="isEditing">
+                        <label>Pic</label>
+                        <input ng-model="supplier.pic">
+                    </md-input-container>
+                    </td>
+                    <td>
+                        <label ng-hide="isEditing" ng-dblclick="isEditing = !isEditing">{{supplier.address}}</label>
+                    <md-input-container  ng-show="isEditing" ng-dblclick="isEditing = !isEditing"  ng-show="isEditing">
+                        <label>Address</label>
+                        <input ng-model="supplier.address">
+                    </md-input-container>
+                    </td>
+                    <td>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="deleteSupplier(supplier.supplierId)">
+                        <md-icon class="fa fa-remove" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="updateSupplier(supplier, 99)">
+                        <md-icon class="fa fa-pencil" style="font-size:24px;color:rgb(63,81,181);"></md-icon>
+                    </md-button>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>  
+        </div>  
+    </md-content>
 </div>
